@@ -7,13 +7,10 @@ public class PlayerAnimationController : MonoBehaviour
     private Animator _animator;
     private PlayerController _playerController;
 
-    private int _idle = Animator.StringToHash("Idle");
-    private int _shootingIdle = Animator.StringToHash("ShootingIdle");
-    private int _reloadingIdle = Animator.StringToHash("ReloadIdle");
     private int _moveX = Animator.StringToHash("MoveX");
-    private int _moveZ = Animator.StringToHash("MoveZ");
-    private int _shootingRun = Animator.StringToHash("ShootingRun");
-    private int _reloadRun = Animator.StringToHash("ReloadRun");
+    private int _moveY = Animator.StringToHash("MoveY");
+    private int _death = Animator.StringToHash("Death");
+
 
     void Start()
     {
@@ -23,7 +20,8 @@ public class PlayerAnimationController : MonoBehaviour
 
     void Update()
     {
-        _animator.SetFloat(_moveX, _playerController.InputX);
-        _animator.SetFloat(_moveZ, _playerController.InputY);
+        _animator.SetFloat(_moveX,_playerController.InputX);
+        _animator.SetFloat(_moveY, _playerController.InputY);
+        _animator.SetBool(_death, _playerController.DeathPlayer);
     }
 }
