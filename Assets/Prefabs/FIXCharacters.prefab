@@ -1092,15 +1092,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3089595151504549083}
+  - component: {fileID: 1317220885034995859}
   - component: {fileID: 1470461464959047177}
   - component: {fileID: 8939619330407111627}
   - component: {fileID: 7766397539743259440}
-  - component: {fileID: 1317220885034995859}
   - component: {fileID: 4703573289579062703}
   - component: {fileID: 4383349911199535900}
+  - component: {fileID: 7648843503189919431}
   m_Layer: 0
   m_Name: FIXCharacters
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1126,6 +1127,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &1317220885034995859
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2426211801386647137}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.24
+  m_Height: 1.88
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.91, z: 0}
 --- !u!95 &1470461464959047177
 Animator:
   serializedVersion: 3
@@ -1159,8 +1174,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 3
   _camera: {fileID: 0}
-  target: {fileID: 1499634377}
-  ignoreMask:
+  _target: {fileID: 1499634377}
+  _mainTransform: {fileID: 0}
+  _ignoreMask:
     serializedVersion: 2
     m_Bits: 512
 --- !u!114 &7766397539743259440
@@ -1175,20 +1191,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 697680ed8c99a1d43a77dda29dc05e52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!136 &1317220885034995859
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2426211801386647137}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.24
-  m_Height: 1.88
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.91, z: 0}
 --- !u!114 &4703573289579062703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1260,6 +1262,18 @@ MonoBehaviour:
   - {fileID: 5298408703537505768}
   - {fileID: 4617697401924831357}
   - {fileID: 1839454763925696794}
+--- !u!114 &7648843503189919431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2426211801386647137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77e573f500663a442a76f806f9ed467c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2595564930752096517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2669,6 +2683,7 @@ GameObject:
   - component: {fileID: 9173207444096929195}
   - component: {fileID: 7227498817286990975}
   - component: {fileID: 7227498817286990976}
+  - component: {fileID: 7227498817286990977}
   m_Layer: 0
   m_Name: DeadLineRiffle
   m_TagString: Untagged
@@ -2750,7 +2765,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7227498817286990974}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 0.1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
@@ -2771,6 +2786,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.63846236, y: 5.497614, z: 1.6563362}
   m_Center: {x: -0.000000044703654, y: 2.2540987, z: 0.3768}
+--- !u!114 &7227498817286990977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7227498817286990974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ede280f953bae843a52e3242e90cf6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _firePoint: {fileID: 1185757079933206437}
+  _bulletSpeed: 0
+  _maxAmmo: 3
+  _bulletPrefabT: {fileID: 246277729962408362, guid: 54ad88c3bac0fa049bc1f3bcf2d123f8,
+    type: 3}
+  _bulletContain: {fileID: 0}
 --- !u!1 &7402776481237041104
 GameObject:
   m_ObjectHideFlags: 0
