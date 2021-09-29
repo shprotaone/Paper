@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed212072033a344ca5d58fa13c7bfd9, type: 3}
+  m_Name: EnemyList
+  m_EditorClassIdentifier: 
+  _lightEnemy:
+    Name: light
+    MaxHealth: 1
+    Damage: 1
+    Speed: 3
+    Points: 10
+    Prefab: {fileID: 4917851891295848497, guid: b3b7f6d7ac2500d4a9f7b1a356751dea,
+      type: 3}
+  _midEnemy:
+    Name: mid
+    MaxHealth: 2
+    Damage: 2
+    Speed: 2
+    Points: 20
+    Prefab: {fileID: 4917851891295848497, guid: cfcd4f85f7ab5b84daacd3ae36ca6cf5,
+      type: 3}
+  _fatEnemy:
+    Name: Fat
+    MaxHealth: 3
+    Damage: 3
+    Speed: 1
+    Points: 30
+    Prefab: {fileID: 4917851891295848497, guid: 5d2e7b6474cff114ebe913062eca1bda,
+      type: 3}

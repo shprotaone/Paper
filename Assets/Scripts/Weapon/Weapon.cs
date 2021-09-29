@@ -38,7 +38,7 @@ public class Weapon : MonoBehaviour
     {
         Shooting();
         Reloading();
-        print(_playerController.ShootDirection);
+        //print(_playerController.ShootDirection);
     }
 
     private void Shooting()
@@ -68,7 +68,7 @@ public class Weapon : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            if (CapacityAmmo != 0)
+            if (CapacityAmmo >= 0)
             {
                 float addAmmo = _maxAmmo - CurrentAmmo;
                 CurrentAmmo += addAmmo;

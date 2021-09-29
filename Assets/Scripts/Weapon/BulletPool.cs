@@ -22,6 +22,7 @@ public class BulletPool<Bullet> where Bullet : MonoBehaviour
         this.Container = container;
         this.CreatePool(count);
     }
+
     /// <summary>
     /// Создание пула
     /// </summary>

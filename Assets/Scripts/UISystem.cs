@@ -36,34 +36,30 @@ public class UISystem : MonoBehaviour
             _hearts[2].SetActive(false);
         }
     }
-    private void DrawScores()
-    {
 
-    }
     private void DrawAmmo()
     {
-
-        //Vector3 pos = Input.mousePosition + _offsetAmmoView;
-        //_ammoView.position = _cam.ScreenToWorldPoint(pos);
+        Vector3 pos = Input.mousePosition + _offsetAmmoView;
+        _ammoView.position = _cam.ScreenToWorldPoint(pos);
 
         _capacityAmmoText.text = _weapon.CapacityAmmo.ToString();
     }
 
-    private void OnGUI()
-    {
-        Vector3 point = new Vector3();
-        Event currentEvent = Event.current;
-        Vector2 mousePos = new Vector2();
+    //private void OnGUI()
+    //{
+    //    Vector3 point = new Vector3();
+    //    Event currentEvent = Event.current;
+    //    Vector2 mousePos = new Vector2();
 
-        mousePos.x = currentEvent.mousePosition.x;
-        mousePos.y = _cam.pixelHeight - currentEvent.mousePosition.y;
+    //    mousePos.x = currentEvent.mousePosition.x;
+    //    mousePos.y = _cam.pixelHeight - currentEvent.mousePosition.y;
 
-        point = _cam.ScreenToViewportPoint(new Vector3(mousePos.x, mousePos.y, _cam.nearClipPlane));
+    //    point = _cam.ScreenToViewportPoint(new Vector3(mousePos.x, mousePos.y, _cam.nearClipPlane));
 
-        GUILayout.BeginArea(new Rect(20, 20, 250, 120));
-        GUILayout.Label("Screen pixels: " + _cam.pixelWidth + ":" + _cam.pixelHeight);
-        GUILayout.Label("Mouse position: " + mousePos);
-        GUILayout.Label("World position: " + point.ToString("F3"));
-        GUILayout.EndArea();
-    }
+    //    GUILayout.BeginArea(new Rect(20, 20, 250, 120));
+    //    GUILayout.Label("Screen pixels: " + _cam.pixelWidth + ":" + _cam.pixelHeight);
+    //    GUILayout.Label("Mouse position: " + mousePos);
+    //    GUILayout.Label("World position: " + point.ToString("F3"));
+    //    GUILayout.EndArea();
+    //}
 }

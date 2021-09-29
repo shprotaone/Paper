@@ -11,7 +11,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject _target;
     [SerializeField] private GameObject _mainTransform;
     [SerializeField] private LayerMask _ignoreMask;
-        
+
+    private CharacterController _characterController;
     private RigBuilder _rigBuilder;
     private HealthSystem _healthSystem;
     private Weapon _currentWeapon;
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        _characterController = GetComponent<CharacterController>();
         _currentWeapon = GetComponentInChildren<Weapon>();
         _rigBuilder = GetComponent<RigBuilder>();
         _healthSystem = GetComponent<HealthSystem>();
@@ -49,11 +51,11 @@ public class PlayerController : MonoBehaviour
         ShootDirection = _target.transform.position;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.collider.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy"))
         {
-            Health = _healthSystem.TakeDamage(Health);
+            Health -= 1;
         }
     }
 
@@ -64,8 +66,15 @@ public class PlayerController : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
         InputX = vertical;
 
-        Vector3 direction = new Vector3(horizontal, 0f, vertical);       
-        transform.Translate(direction * _speed * Time.deltaTime);        
+        Vector3 direction = new Vector3(horizontal, 0f, vertical);
+
+        if (direction.magnitude >= 0.1f)
+        {
+            Vector3 moveDir = transform.rotation * direction;
+            _characterController.Move(moveDir * _speed * Time.deltaTime);
+        }
+
+        transform.Translate(direction * _speed * Time.deltaTime);        ///ПОЧИНИТЬ ПОВОРОТ
     }
 
     private void Aimining()

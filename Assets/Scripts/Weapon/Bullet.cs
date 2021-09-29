@@ -19,15 +19,18 @@ public class Bullet : MonoBehaviour
         StopAllCoroutines();
     }
 
-    public void Setup(Vector3 shootDir,float bulletSpeed)
-    {
-        this._shootDirection = shootDir;
-        this._bulletSpeed = bulletSpeed;
-    }
-
     private void Update()
     {
         transform.position += _shootDirection * _bulletSpeed * Time.deltaTime;
+        
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Obstacle") || other.CompareTag("Enemy"))
+        {
+            Deactivate();
+        }
     }
 
     private IEnumerator LifeRoutine()
@@ -42,5 +45,10 @@ public class Bullet : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    public void Setup(Vector3 shootDir, float bulletSpeed)
+    {
+        this._shootDirection = shootDir;
+        this._bulletSpeed = bulletSpeed;
+    }
 
 }
