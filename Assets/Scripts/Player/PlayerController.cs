@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public event Action<int,bool> OnHealthChanged;
+
     [SerializeField] private float _speed;
     [SerializeField] private Camera _camera;
     [SerializeField] private GameObject _target;
@@ -14,20 +16,17 @@ public class PlayerController : MonoBehaviour
 
     private CharacterController _characterController;
     private RigBuilder _rigBuilder;
-    private HealthSystem _healthSystem;
     private Weapon _currentWeapon;
-    private float _maxHealth = 3;
-
-    public event EventHandler OnShootingAim;
+    private int _health = 3;
 
     #region properties
 
+    public Vector3 ShootDirection { get; private set; }
     public bool DeathPlayer { get; set; }
     public float InputX { get; set; }
     public float InputY { get; set; }
-    public float Health { get; set; }
-    public Vector3 ShootDirection { get; private set; }
-
+    public int Health { get { return _health; } }
+    
     #endregion
 
     private void Start()
@@ -35,8 +34,6 @@ public class PlayerController : MonoBehaviour
         _characterController = GetComponent<CharacterController>();
         _currentWeapon = GetComponentInChildren<Weapon>();
         _rigBuilder = GetComponent<RigBuilder>();
-        _healthSystem = GetComponent<HealthSystem>();
-        Health = _maxHealth;
     }
 
     private void Update()
@@ -49,14 +46,6 @@ public class PlayerController : MonoBehaviour
         Death();
 
         ShootDirection = _target.transform.position;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Enemy"))
-        {
-            Health -= 1;
-        }
     }
 
     private void Movement()
@@ -104,6 +93,27 @@ public class PlayerController : MonoBehaviour
             _rigBuilder.enabled = false;
             _currentWeapon.transform.SetParent(_mainTransform.transform);
             _currentWeapon.ReleasingWeapon();
+        }
+    }
+
+    public void ApplyDamage(int damage)
+    {
+        _health -= damage;
+        if(OnHealthChanged != null)
+        {
+            OnHealthChanged.Invoke(_health,false);
+        }
+    }
+
+    public void Healing(int heal)
+    {
+        if (_health < 3)
+        {
+            _health += heal;
+            if (OnHealthChanged != null)
+            {
+                OnHealthChanged.Invoke(_health,true);
+            }
         }
     }
 

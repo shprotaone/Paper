@@ -1,38 +1,66 @@
-п»їusing System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    [SerializeField] private Text _timerText;
-    [SerializeField] private Text _scoreText;
-
-    private float _timeStart;
+    private float _inGameTime;
     private float _score;
+    private float _spawnTime = 2f;
+    private float _round = 30;
+    private DropList _dropItems;
+
+    public float InGameTime { get { return _inGameTime; } }
+    public float Score { get { return _score; } }
+    public float SpawnTime { get { return _spawnTime; } }
 
     private void Awake()
     {
-        instance = this;
+        _dropItems = GetComponent<DropList>();
+
+        if (instance == null)
+        {
+            instance = this;
+        }
     }
-    void Update()
+
+    private void Update()
     {
         Timer();
+        Level();
     }
 
     private void Timer()
     {
-        _timeStart = _timeStart + Time.deltaTime;
-        TimeSpan time = TimeSpan.FromSeconds(_timeStart);
-        _timerText.text = time.ToString(@"mm\:ss");
+        _inGameTime = _inGameTime + Time.deltaTime;
     }
 
     public void AddScore(float points)
     {
         _score += points;
-        _scoreText.text = _score.ToString();    //NullReference check
+    }
+
+    public void DropItem(Vector3 pos)
+    {
+        GameObject drop = _dropItems.Drop();
+        if (drop != null)
+        {
+            Instantiate(drop, pos, Quaternion.identity);
+        }
+    }
+
+    /// <summary>
+    /// Повышения уровня сложности в зависимости от времени
+    /// </summary>
+    private void Level()
+    {
+        if (_inGameTime > _round)
+        {
+            _round += 20;
+            _spawnTime -= 0.1f;            
+        }
     }
 }

@@ -56,12 +56,11 @@ public class Weapon : MonoBehaviour
     {
         var bullet = pool.GetBullet();
         bullet.transform.position = _firePoint.position;
-        bullet.transform.rotation = Quaternion.identity;
+        bullet.transform.rotation = Quaternion.LookRotation(_firePoint.position - _playerController.ShootDirection);
 
         Vector3 shootDir = (_playerController.ShootDirection - _firePoint.position).normalized;
         bullet.transform.GetComponent<Bullet>().Setup(shootDir,_bulletSpeed);
 
-        Debug.DrawRay(_firePoint.position, shootDir, Color.red, 1000);
     }
 
     private void Reloading()
@@ -71,10 +70,16 @@ public class Weapon : MonoBehaviour
             if (CapacityAmmo >= 0)
             {
                 float addAmmo = _maxAmmo - CurrentAmmo;
-                CurrentAmmo += addAmmo;
+                
+                if (CapacityAmmo < addAmmo)
+                {
+                    addAmmo = CapacityAmmo;
+                }
                 CapacityAmmo -= addAmmo;
-
-                print(CurrentAmmo);
+                CurrentAmmo += addAmmo;
+                
+                print("В обойме осталось " + CapacityAmmo);
+                print("Добавилось " + addAmmo);
             }
             else
             {
@@ -90,5 +95,9 @@ public class Weapon : MonoBehaviour
         _rigidbody.AddForce(Vector3.forward/2, ForceMode.Impulse);
     }
 
+    public void AddAmmo(float ammo)
+    {
+        CapacityAmmo += ammo;
+    }
 
 }

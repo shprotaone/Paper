@@ -37,6 +37,11 @@ public class BulletPool<Bullet> where Bullet : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Создание пули по заданному количеству
+    /// </summary>
+    /// <param name="isActiveByDefault"></param>
+    /// <returns></returns>
     private Bullet CreateBullet(bool isActiveByDefault = false)
     {
         var createdBullet = Object.Instantiate(this.prefab, this.Container);
@@ -45,6 +50,11 @@ public class BulletPool<Bullet> where Bullet : MonoBehaviour
         return createdBullet;
     }   
 
+    /// <summary>
+    /// Проверка на свободную пулю
+    /// </summary>
+    /// <param name="bullet"></param>
+    /// <returns></returns>
     public bool HasFreeElement(out Bullet bullet)
     {
         foreach (var currentBullet in pool)
@@ -61,6 +71,10 @@ public class BulletPool<Bullet> where Bullet : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// Активация свободной пули
+    /// </summary>
+    /// <returns></returns>
     public Bullet GetBullet()
     {
         if(this.HasFreeElement(out var bullet))

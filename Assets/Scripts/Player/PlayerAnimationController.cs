@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +11,6 @@ public class PlayerAnimationController : MonoBehaviour
     private int _moveY = Animator.StringToHash("MoveY");
     private int _death = Animator.StringToHash("Death");
 
-
     void Start()
     {
         _animator = GetComponent<Animator>();
@@ -23,5 +22,6 @@ public class PlayerAnimationController : MonoBehaviour
         _animator.SetFloat(_moveX,_playerController.InputX);
         _animator.SetFloat(_moveY, _playerController.InputY);
         _animator.SetBool(_death, _playerController.DeathPlayer);
+        
     }
 }

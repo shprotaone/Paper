@@ -1191,7 +1191,6 @@ GameObject:
   - component: {fileID: 7766397539743259440}
   - component: {fileID: 4703573289579062703}
   - component: {fileID: 4383349911199535900}
-  - component: {fileID: 7648843503189919431}
   - component: {fileID: 265091553}
   m_Layer: 0
   m_Name: FIXCharacters
@@ -1375,18 +1374,6 @@ MonoBehaviour:
   - {fileID: 5298408703537505768}
   - {fileID: 4617697401924831357}
   - {fileID: 1839454763925696794}
---- !u!114 &7648843503189919431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2426211801386647137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77e573f500663a442a76f806f9ed467c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &265091553
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2930,8 +2917,8 @@ MonoBehaviour:
   _firePoint: {fileID: 1185757079933206437}
   _bulletSpeed: 10
   _maxAmmo: 50
-  _fireRate: 15
-  _bulletPrefabT: {fileID: 246277729962408362, guid: 54ad88c3bac0fa049bc1f3bcf2d123f8,
+  _fireRate: 5
+  _bulletPrefabT: {fileID: 1877062130858750352, guid: 336e89b74fc768048bbad7bbfe2de4fc,
     type: 3}
   _bulletContain: {fileID: 0}
   _playerController: {fileID: 8939619330407111627}

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,27 +12,46 @@ public class UISystem : MonoBehaviour
     [SerializeField] private RectTransform _ammoView;
     [SerializeField] private Vector3 _offsetAmmoView;
     [SerializeField] private Camera _cam;
+
     [SerializeField] private Text _capacityAmmoText;
+    [SerializeField] private Text _timerText;
+    [SerializeField] private Text _scoreText;
+
+    private void Start()
+    {
+        OnEnable();
+        OnDisable();
+    }
 
     private void Update()
     {
-        DrawLifes();
         DrawAmmo();
+        DrawTime();
+        DrawScore();
     }
 
-    private void DrawLifes()
+    private void OnEnable()
     {
-        if (_playerController.Health < 1)
+        _playerController.OnHealthChanged += UpdateHealth;
+    }
+
+    private void OnDisable()
+    {
+        _playerController.OnHealthChanged -= UpdateHealth;
+    }
+
+    private void DrawLifes(int value,bool enable)
+    {
+        if(value >= -1)
         {
-            _hearts[0].SetActive(false);
-        }
-        else if (_playerController.Health < 2)
-        {
-            _hearts[1].SetActive(false);
-        }
-        else if (_playerController.Health < 3)
-        {
-            _hearts[2].SetActive(false);
+            if (enable)
+            {
+                _hearts[value-1].SetActive(enable);
+            }
+            else
+            {
+                _hearts[value].SetActive(enable);
+            }           
         }
     }
 
@@ -45,21 +63,20 @@ public class UISystem : MonoBehaviour
         _capacityAmmoText.text = _weapon.CapacityAmmo.ToString();
     }
 
-    //private void OnGUI()
-    //{
-    //    Vector3 point = new Vector3();
-    //    Event currentEvent = Event.current;
-    //    Vector2 mousePos = new Vector2();
+    private void UpdateHealth(int value,bool enable)
+    {
+        if (_playerController == null) return;
+        DrawLifes(value,enable);
+    }
 
-    //    mousePos.x = currentEvent.mousePosition.x;
-    //    mousePos.y = _cam.pixelHeight - currentEvent.mousePosition.y;
+    private void DrawTime()
+    {
+        TimeSpan time = TimeSpan.FromSeconds(_gameManager.InGameTime);
+        _timerText.text = time.ToString(@"mm\:ss");
+    }
 
-    //    point = _cam.ScreenToViewportPoint(new Vector3(mousePos.x, mousePos.y, _cam.nearClipPlane));
-
-    //    GUILayout.BeginArea(new Rect(20, 20, 250, 120));
-    //    GUILayout.Label("Screen pixels: " + _cam.pixelWidth + ":" + _cam.pixelHeight);
-    //    GUILayout.Label("Mouse position: " + mousePos);
-    //    GUILayout.Label("World position: " + point.ToString("F3"));
-    //    GUILayout.EndArea();
-    //}
+    private void DrawScore()
+    {
+        _scoreText.text = _gameManager.Score.ToString();
+    }
 }
