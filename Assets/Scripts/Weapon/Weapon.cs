@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    /// <summary>
-    /// ДОДЕЛАТЬ СТРЕЛЬБУ ЧЕРЕЗ ВЕКТОРА
-    /// </summary>
     [SerializeField] private Transform _firePoint;
     [SerializeField] private float _bulletSpeed;
     [SerializeField] private float _maxAmmo = 50;
@@ -36,9 +33,11 @@ public class Weapon : MonoBehaviour
 
     private void Update()
     {
-        Shooting();
-        Reloading();
-        //print(_playerController.ShootDirection);
+        if (!_playerController.PlayerIsDeath)
+        {
+            Shooting();
+            Reloading();
+        }
     }
 
     private void Shooting()
@@ -60,7 +59,6 @@ public class Weapon : MonoBehaviour
 
         Vector3 shootDir = (_playerController.ShootDirection - _firePoint.position).normalized;
         bullet.transform.GetComponent<Bullet>().Setup(shootDir,_bulletSpeed);
-
     }
 
     private void Reloading()
@@ -92,7 +90,7 @@ public class Weapon : MonoBehaviour
     {
         _rigidbody.isKinematic = false;
         _rigidbody.useGravity = true;
-        _rigidbody.AddForce(Vector3.forward/2, ForceMode.Impulse);
+        _rigidbody.AddForce(Vector3.forward/10, ForceMode.Impulse);
     }
 
     public void AddAmmo(float ammo)

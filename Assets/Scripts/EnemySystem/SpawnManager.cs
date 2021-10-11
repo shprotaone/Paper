@@ -25,14 +25,15 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator SpawnEnemy()
     {
-        while (true)
+        while (!_gameManager.PlayerIsDeath)
         {
             yield return new WaitForSeconds(_gameManager.SpawnTime);
             if(_spawnLimit > _enemyContain.transform.childCount)
             {
                 CreateEnemy(EnemyVariable(), RandomPosition());
             }
-        }        
+        }
+        EndGame();
     }
 
     private void CreateEnemy(string name, int pos)
@@ -71,5 +72,13 @@ public class SpawnManager : MonoBehaviour
 
         string result = enemies[Random.Range(0, enemies.Length)];
         return result;
+    }
+
+    private void EndGame()
+    {
+        for (int i = 0; i < _enemyContain.childCount; i++)
+        {
+            Destroy(_enemyContain.GetChild(i).gameObject);
+        }
     }
 }

@@ -13,20 +13,23 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject _target;
     [SerializeField] private GameObject _mainTransform;
     [SerializeField] private LayerMask _ignoreMask;
+    [SerializeField] private LayerMask _floorMask;
 
     private CharacterController _characterController;
     private RigBuilder _rigBuilder;
     private Weapon _currentWeapon;
+    private GameManager _gameManager;
     private int _health = 3;
+    private bool _playerIsDeath;
 
     #region properties
 
     public Vector3 ShootDirection { get; private set; }
-    public bool DeathPlayer { get; set; }
     public float InputX { get; set; }
     public float InputY { get; set; }
     public int Health { get { return _health; } }
-    
+    public bool PlayerIsDeath { get { return _playerIsDeath; } }
+
     #endregion
 
     private void Start()
@@ -34,16 +37,20 @@ public class PlayerController : MonoBehaviour
         _characterController = GetComponent<CharacterController>();
         _currentWeapon = GetComponentInChildren<Weapon>();
         _rigBuilder = GetComponent<RigBuilder>();
+
+        if(_gameManager == null)
+        {
+            _gameManager = GameManager.instance;
+        }
     }
 
     private void Update()
     {
-        if (!DeathPlayer)
+        if (!PlayerIsDeath)
         {
             Movement();
             Aimining();
         }
-        Death();
 
         ShootDirection = _target.transform.position;
     }
@@ -63,33 +70,30 @@ public class PlayerController : MonoBehaviour
             _characterController.Move(moveDir * _speed * Time.deltaTime);
         }
 
-        transform.Translate(direction * _speed * Time.deltaTime);        ///ПОЧИНИТЬ ПОВОРОТ
+        //transform.Translate(direction * _speed * Time.deltaTime);        ///ПОЧИНИТЬ ПОВОРОТ
     }
 
     private void Aimining()
     {
-        Plane playerPlane = new Plane(Vector3.up, transform.position);  //высчитывает точку
-        Ray ray = _camera.ScreenPointToRay(Input.mousePosition);        //луч для точки
+        Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
 
-        float hitDist = 0f;
+        RaycastHit floorHit;
 
-        if (playerPlane.Raycast(ray, out hitDist))  //отдает дистанцию до точки
+        if (Physics.Raycast(ray, out floorHit, 100f, _floorMask))
         {
-            Vector3 targetPoint = ray.GetPoint(hitDist);    //координаты куда идти
-            Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position);  //координаты к повороту к точке к которой нужно идти
-            targetRotation.x = 0;
-            targetRotation.z = 0;
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 7f * Time.deltaTime);  //изменение координат поворота
-            _target.transform.position = targetPoint + new Vector3(0, 1.3f, 0);           
+            Vector3 playerToMouse = floorHit.point - transform.position;
+            playerToMouse.y = 0f;
+            Quaternion newRotation = Quaternion.LookRotation(playerToMouse);
+            transform.rotation = Quaternion.Slerp(transform.rotation, newRotation,7f*Time.deltaTime);
         }
-        Debug.DrawRay(ray.origin, ray.direction, Color.red,1000f);
     }
 
-    private void Death()    ///??Куда то надо перенести
+    private void Death()
     {
         if (Health<=0)
         {
-            DeathPlayer = true;
+            _playerIsDeath = true;
+            _gameManager.PlayerIsDeath = _playerIsDeath;
             _rigBuilder.enabled = false;
             _currentWeapon.transform.SetParent(_mainTransform.transform);
             _currentWeapon.ReleasingWeapon();
@@ -101,8 +105,9 @@ public class PlayerController : MonoBehaviour
         _health -= damage;
         if(OnHealthChanged != null)
         {
+            Death();
             OnHealthChanged.Invoke(_health,false);
-        }
+        }       
     }
 
     public void Healing(int heal)
@@ -116,5 +121,4 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
 }

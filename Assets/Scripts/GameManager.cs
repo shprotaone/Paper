@@ -7,15 +7,17 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    private DropList _dropItems;
     private float _inGameTime;
     private float _score;
     private float _spawnTime = 2f;
     private float _round = 30;
-    private DropList _dropItems;
 
     public float InGameTime { get { return _inGameTime; } }
     public float Score { get { return _score; } }
     public float SpawnTime { get { return _spawnTime; } }
+    public string NameForRecord { get; set; }
+    public bool PlayerIsDeath { get; set; }
 
     private void Awake()
     {
@@ -29,8 +31,11 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        Timer();
-        Level();
+        if (!PlayerIsDeath)
+        {
+            Timer();
+            Level();
+        }
     }
 
     private void Timer()
@@ -40,6 +45,7 @@ public class GameManager : MonoBehaviour
 
     public void AddScore(float points)
     {
+        if(!PlayerIsDeath)
         _score += points;
     }
 
@@ -63,4 +69,5 @@ public class GameManager : MonoBehaviour
             _spawnTime -= 0.1f;            
         }
     }
+
 }

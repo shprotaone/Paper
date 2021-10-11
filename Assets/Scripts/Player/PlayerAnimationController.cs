@@ -13,7 +13,7 @@ public class PlayerAnimationController : MonoBehaviour
 
     void Start()
     {
-        _animator = GetComponent<Animator>();
+        _animator = GetComponentInChildren<Animator>();
         _playerController = GetComponent<PlayerController>();
     }
 
@@ -21,7 +21,6 @@ public class PlayerAnimationController : MonoBehaviour
     {
         _animator.SetFloat(_moveX,_playerController.InputX);
         _animator.SetFloat(_moveY, _playerController.InputY);
-        _animator.SetBool(_death, _playerController.DeathPlayer);
-        
+        _animator.SetBool(_death, _playerController.PlayerIsDeath);        
     }
 }

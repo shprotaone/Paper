@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UISystem : MonoBehaviour
 {
@@ -17,6 +18,11 @@ public class UISystem : MonoBehaviour
     [SerializeField] private Text _timerText;
     [SerializeField] private Text _scoreText;
 
+    [SerializeField] private GameObject _inputNameField;
+    [SerializeField] private HighscoreTable _highscoreTable;
+
+    private bool _recordWindow = false;
+
     private void Start()
     {
         OnEnable();
@@ -25,9 +31,12 @@ public class UISystem : MonoBehaviour
 
     private void Update()
     {
-        DrawAmmo();
-        DrawTime();
-        DrawScore();
+        if (!_playerController.PlayerIsDeath)       //разобратся с уведомлениями о смерти
+        {
+            DrawAmmo();
+            DrawTime();
+            DrawScore();
+        }
     }
 
     private void OnEnable()
@@ -67,6 +76,7 @@ public class UISystem : MonoBehaviour
     {
         if (_playerController == null) return;
         DrawLifes(value,enable);
+        SubmitRecord();
     }
 
     private void DrawTime()
@@ -78,5 +88,20 @@ public class UISystem : MonoBehaviour
     private void DrawScore()
     {
         _scoreText.text = _gameManager.Score.ToString();
+    }
+    private void SubmitRecord()
+    {
+        if (_playerController.PlayerIsDeath)
+        {
+            _inputNameField.SetActive(true);
+        }       
+    }
+
+    public void SaveScore()
+    {
+        _gameManager.NameForRecord = _inputNameField.GetComponent<TMP_InputField>().text;
+        _highscoreTable.AddHighscoreEntry(_gameManager.Score, (int)_gameManager.InGameTime, _gameManager.NameForRecord);
+        _inputNameField.SetActive(false);
+        _highscoreTable.gameObject.SetActive(true);
     }
 }
