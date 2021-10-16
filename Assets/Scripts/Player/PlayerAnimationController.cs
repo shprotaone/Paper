@@ -19,7 +19,7 @@ public class PlayerAnimationController : MonoBehaviour
 
     void Update()
     {
-        _animator.SetFloat(_moveX,_playerController.InputX);
+        _animator.SetFloat(_moveX, _playerController.InputX);
         _animator.SetFloat(_moveY, _playerController.InputY);
         _animator.SetBool(_death, _playerController.PlayerIsDeath);        
     }

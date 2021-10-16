@@ -9,16 +9,26 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float _health;
     [SerializeField] private float _speed;
     [SerializeField] private float _points;
-
+    [SerializeField] private GameObject _flamesContainer;
+    [SerializeField] private ParticleSystem _explosion;
+    
     private NavMeshAgent _agent;
+    private Animator _animator;
     private GameObject _player;    
     private int _damage = 1;
+    private ParticleSystem[] _flames;
 
     private void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
         _player = GameObject.FindGameObjectWithTag("Player");
+        _animator = GetComponentInChildren<Animator>();
         _agent.speed = _speed;
+
+        if(_flamesContainer != null)
+        {
+          _flames = _flamesContainer.GetComponentsInChildren<ParticleSystem>();
+        }       
     }
 
     private void Update()
@@ -49,6 +59,7 @@ public class EnemyController : MonoBehaviour
         else if (other.CompareTag("projectile"))
         {
             _health -= 1;
+            ShowDamage((int)_health);
             if (_health == 0) DeathEnemy();
         }
     }
@@ -57,6 +68,16 @@ public class EnemyController : MonoBehaviour
     {
         GameManager.instance.AddScore(_points);
         GameManager.instance.DropItem(this.transform.position);
-        Destroy(this.gameObject);        
+        _explosion.Play();
+        _agent.isStopped = true;
+        _animator.gameObject.SetActive(false);
+        this.gameObject.GetComponent<Collider>().enabled = false;   //не лучшее решение, пока так
+
+        Destroy(this.gameObject,0.5f);
+    }
+
+    private void ShowDamage(int health)
+    {   if(_flamesContainer != null)     
+        _flames[health].Play();
     }
 }

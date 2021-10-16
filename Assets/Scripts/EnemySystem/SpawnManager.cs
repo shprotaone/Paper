@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-
     [SerializeField] private EnemyList _fillEnemy;
     [SerializeField] private GameObject[] _spawnPoint; 
     [SerializeField] private Transform _enemyContain;
@@ -64,16 +63,21 @@ public class SpawnManager : MonoBehaviour
     /// <returns></returns>
     private string EnemyVariable()
     {
-        string[] enemies = new string[3];
+        string[] enemies = new string[4];
 
         enemies[0] = _factory.FatEnemyID;
         enemies[1] = _factory.LightEnemyID;
         enemies[2] = _factory.MidEnemyID;
+        enemies[3] = _factory.BossID;
 
         string result = enemies[Random.Range(0, enemies.Length)];
+
         return result;
     }
 
+    /// <summary>
+    /// Удаление всех врогов при конце игры
+    /// </summary>
     private void EndGame()
     {
         for (int i = 0; i < _enemyContain.childCount; i++)

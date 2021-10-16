@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AmmoBoxItem : MonoBehaviour
+public class AmmoBoxItem : Item
 {
     [SerializeField] private float _ammo;
 

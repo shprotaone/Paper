@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealItem : MonoBehaviour
+public class HealItem : Item
 {
     private int _heal = 1;
 

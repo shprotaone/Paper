@@ -89,6 +89,7 @@ public class UISystem : MonoBehaviour
     {
         _scoreText.text = _gameManager.Score.ToString();
     }
+
     private void SubmitRecord()
     {
         if (_playerController.PlayerIsDeath)

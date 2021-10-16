@@ -15,21 +15,28 @@ MonoBehaviour:
   _lightEnemy:
     Name: light
     MaxHealth: 1
-    Speed: 3
+    Speed: 4
     Points: 10
     Prefab: {fileID: 1510251344618728586, guid: 26d972329bb821d41b772b3e7d8047ef,
       type: 3}
   _midEnemy:
     Name: mid
     MaxHealth: 2
-    Speed: 2
+    Speed: 3
     Points: 20
     Prefab: {fileID: 6287649195431833162, guid: bc8448c38ba5a384aa53cad6e0c2269a,
       type: 3}
   _fatEnemy:
     Name: Fat
     MaxHealth: 3
-    Speed: 1
+    Speed: 2
     Points: 30
-    Prefab: {fileID: 6471976046859682799, guid: e2b60139ee697bb4c86e797679e4d1db,
+    Prefab: {fileID: 1374947272982678608, guid: f87e1f4791a0a734ab33d0e165f5a800,
+      type: 3}
+  _bossEnemy:
+    Name: Boss
+    MaxHealth: 4
+    Speed: 1
+    Points: 50
+    Prefab: {fileID: 3992208418208702637, guid: 2a013aadd9968a14d88f354208f6701e,
       type: 3}
