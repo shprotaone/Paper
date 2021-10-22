@@ -3,7 +3,52 @@ guid: 45401329058c8f948bb11b3a9d395309
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: archmodels87_033_001
+    second: {fileID: 2100000, guid: 36cdca7b0df2bab4497252550aa67246, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: archmodels87_033_002
+    second: {fileID: 2100000, guid: 36cdca7b0df2bab4497252550aa67246, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: archmodels87_033_003
+    second: {fileID: 2100000, guid: e7bd26cd5c355914c877deea3fe90f95, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: archmodels87_033_004
+    second: {fileID: 2100000, guid: 1253fed32268729468f23dadcadfc7c3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: archmodels87_033_005
+    second: {fileID: 2100000, guid: 1253fed32268729468f23dadcadfc7c3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: archmodels87_033_006
+    second: {fileID: 2100000, guid: e7bd26cd5c355914c877deea3fe90f95, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: archmodels87_033_001
+    second: {fileID: 2800000, guid: cf8fac9392c39c949b0aff041bd6e42d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: archmodels87_033_001_bump
+    second: {fileID: 2800000, guid: 5d95186d72c38c04ca747bf57ad66bfc, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: archmodels87_033_002
+    second: {fileID: 2800000, guid: e36db9a43cda8d949819e93676b6df00, type: 3}
   materials:
     materialImportMode: 1
     materialName: 0

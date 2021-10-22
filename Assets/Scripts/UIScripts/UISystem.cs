@@ -14,14 +14,12 @@ public class UISystem : MonoBehaviour
     [SerializeField] private Vector3 _offsetAmmoView;
     [SerializeField] private Camera _cam;
 
-    [SerializeField] private Text _capacityAmmoText;
+    [SerializeField] private TMP_Text _capacityAmmoText;
     [SerializeField] private Text _timerText;
     [SerializeField] private Text _scoreText;
 
     [SerializeField] private GameObject _inputNameField;
     [SerializeField] private HighscoreTable _highscoreTable;
-
-    private bool _recordWindow = false;
 
     private void Start()
     {
@@ -49,27 +47,25 @@ public class UISystem : MonoBehaviour
         _playerController.OnHealthChanged -= UpdateHealth;
     }
 
-    private void DrawLifes(int value,bool enable)
+    private void DrawLifes(int value,bool activate)
     {
         if(value >= -1)
         {
-            if (enable)
+            if (activate)
             {
-                _hearts[value-1].SetActive(enable);
+                _hearts[value-1].SetActive(activate);
             }
             else
             {
-                _hearts[value].SetActive(enable);
+                _hearts[value].SetActive(activate);
             }           
         }
     }
 
     private void DrawAmmo()
     {
-        Vector3 pos = Input.mousePosition + _offsetAmmoView;
-        _ammoView.position = _cam.ScreenToWorldPoint(pos);
-
         _capacityAmmoText.text = _weapon.CapacityAmmo.ToString();
+        _ammoView.position = _playerController.transform.position + _offsetAmmoView;
     }
 
     private void UpdateHealth(int value,bool enable)
@@ -101,6 +97,12 @@ public class UISystem : MonoBehaviour
     public void SaveScore()
     {
         _gameManager.NameForRecord = _inputNameField.GetComponent<TMP_InputField>().text;
+
+        if(_gameManager.NameForRecord == "")
+        {
+            _gameManager.NameForRecord = "Unknown";
+        }
+
         _highscoreTable.AddHighscoreEntry(_gameManager.Score, (int)_gameManager.InGameTime, _gameManager.NameForRecord);
         _inputNameField.SetActive(false);
         _highscoreTable.gameObject.SetActive(true);

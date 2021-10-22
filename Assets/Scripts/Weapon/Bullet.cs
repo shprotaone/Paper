@@ -6,12 +6,14 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float lifetime = 2f;
 
+    private AudioSource _hitSound;
     private Vector3 _shootDirection;
     private float _bulletSpeed;
 
     private void OnEnable()
     {
         StartCoroutine(LifeRoutine());
+        _hitSound = GetComponent<AudioSource>();
     }
 
     private void OnDisable()
@@ -21,15 +23,14 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
-        transform.position += _shootDirection * _bulletSpeed * Time.deltaTime;
-        
+        transform.position += _shootDirection * _bulletSpeed * Time.deltaTime;        
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Obstacle") || other.CompareTag("Enemy"))
         {
-            Deactivate();
+            StartCoroutine(Deactivate(false));
         }
     }
 
@@ -37,12 +38,27 @@ public class Bullet : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(lifetime);
 
-        Deactivate();
+        StartCoroutine(Deactivate(true));
     }
 
-    private void Deactivate()
+    private IEnumerator Deactivate(bool lifetimeDestroy)
     {
+        MeshRenderer render = gameObject.GetComponentInChildren<MeshRenderer>();
+        ParticleSystem particle = GetComponentInChildren<ParticleSystem>();
+
+        particle.Stop();
+        render.enabled = false;
+        _bulletSpeed = 0;
+
+        if(!lifetimeDestroy)
+        _hitSound.Play();
+        
+        yield return new WaitForSeconds(0.7f);
+
+        render.enabled = true;
         gameObject.SetActive(false);
+
+        yield break;
     }
 
     public void Setup(Vector3 shootDir, float bulletSpeed)

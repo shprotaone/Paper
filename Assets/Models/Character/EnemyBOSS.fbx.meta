@@ -3,7 +3,32 @@ guid: 1dbf1bcae7fe0ce44b4b1d77aadbc7f2
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BloodCloth
+    second: {fileID: 2100000, guid: 36ff00bfffc10754bb49fd660366d55e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Folder
+    second: {fileID: 2100000, guid: 616814fc6ecbd1f46b470ea25b5570a5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gold
+    second: {fileID: 2100000, guid: 9c944efe85013344394871cc0ccd08b7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: ab4098197dc892c43aeb95d70a31d603, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: bd3930bd0f8fe7f4ba35ce1f08f84e1a, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

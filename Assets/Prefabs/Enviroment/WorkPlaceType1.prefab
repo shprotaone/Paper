@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2366214427155772408
 Transform:
@@ -60,6 +60,10 @@ PrefabInstance:
     - target: {fileID: 1187395464441800, guid: bf955aa6cf5b1774180125d6b6201b35, type: 3}
       propertyPath: m_Name
       value: FilingCabinet_Drawer
+      objectReference: {fileID: 0}
+    - target: {fileID: 1187395464441800, guid: bf955aa6cf5b1774180125d6b6201b35, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4137810033084392, guid: bf955aa6cf5b1774180125d6b6201b35, type: 3}
       propertyPath: m_RootOrder
@@ -124,6 +128,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Laptop_On
       objectReference: {fileID: 0}
+    - target: {fileID: 1382680370001608, guid: 112cc81e36e745449bf229e4dbb3e073, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 4225381643663648, guid: 112cc81e36e745449bf229e4dbb3e073, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -187,6 +195,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chair_DeskChair_Green
       objectReference: {fileID: 0}
+    - target: {fileID: 1094465521091244, guid: 0bdc1db6cb4c7a5429b33a0cc442a5af, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 4787781481821726, guid: 0bdc1db6cb4c7a5429b33a0cc442a5af, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -249,6 +261,10 @@ PrefabInstance:
     - target: {fileID: 1412888549052842, guid: 683ef653b4b09b94993b7fd393c95978, type: 3}
       propertyPath: m_Name
       value: Table_OfficeDesk
+      objectReference: {fileID: 0}
+    - target: {fileID: 1412888549052842, guid: 683ef653b4b09b94993b7fd393c95978, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4996593761235138, guid: 683ef653b4b09b94993b7fd393c95978, type: 3}
       propertyPath: m_RootOrder
@@ -317,6 +333,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FilingCabinetSingle_Case
       objectReference: {fileID: 0}
+    - target: {fileID: 1699532382590010, guid: a4827c3c34b766743b61c499b08e4c75, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 4992569008144436, guid: a4827c3c34b766743b61c499b08e4c75, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -379,6 +399,10 @@ PrefabInstance:
     - target: {fileID: 1092883800961010, guid: bd7dac146a034144fb4a57250777c4d9, type: 3}
       propertyPath: m_Name
       value: CellPhone
+      objectReference: {fileID: 0}
+    - target: {fileID: 1092883800961010, guid: bd7dac146a034144fb4a57250777c4d9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4461402307424116, guid: bd7dac146a034144fb4a57250777c4d9, type: 3}
       propertyPath: m_RootOrder

@@ -13,7 +13,10 @@ public class Weapon : MonoBehaviour
     [SerializeField] private PlayerController _playerController;
 
     private BulletPool<Bullet> pool;
+    private ParticleSystem _shootLight;
     private Rigidbody _rigidbody;
+    private AudioSource[] _sounds;
+    //[0] - Reload,[1] - Shoot
     
     private float _nextTimeToFire = 0;
 
@@ -24,6 +27,8 @@ public class Weapon : MonoBehaviour
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        _sounds = GetComponents<AudioSource>();
+        _shootLight = GetComponentInChildren<ParticleSystem>();
         CurrentAmmo = _maxAmmo;
         MaxAmmo = _maxAmmo;
         CapacityAmmo = 100;
@@ -31,42 +36,39 @@ public class Weapon : MonoBehaviour
         this.pool = new BulletPool<Bullet>(_bulletPrefabT, _maxAmmo, _bulletContain);
     }
 
-    private void Update()
-    {
-        if (!_playerController.PlayerIsDeath)
-        {
-            Shooting();
-            Reloading();
-        }
-    }
-
-    private void Shooting()
+    public void Shooting()
     {
         if(Input.GetMouseButton(0) && Time.time >= _nextTimeToFire && CurrentAmmo > 0)
         {
-            _nextTimeToFire = Time.time + 1f / _fireRate;
+            _nextTimeToFire = Time.time + 1f / _fireRate;            
             Shoot();
-            
             CurrentAmmo -= 1;
         }
+
+        Reloading();        
     }
 
     private void Shoot()
     {
         var bullet = pool.GetBullet();
+
         bullet.transform.position = _firePoint.position;
         bullet.transform.rotation = Quaternion.LookRotation(_firePoint.position - _playerController.ShootDirection);
 
         Vector3 shootDir = (_playerController.ShootDirection - _firePoint.position).normalized;
-        bullet.transform.GetComponent<Bullet>().Setup(shootDir,_bulletSpeed);
+        bullet.transform.GetComponent<Bullet>().Setup(shootDir, _bulletSpeed);
+
+        _shootLight.Play();
+        _sounds[1].Play();
     }
 
     private void Reloading()
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            if (CapacityAmmo >= 0)
+            if (CapacityAmmo >= 0 && _maxAmmo != CurrentAmmo)
             {
+                _sounds[0].Play();
                 float addAmmo = _maxAmmo - CurrentAmmo;
                 
                 if (CapacityAmmo < addAmmo)
@@ -75,13 +77,10 @@ public class Weapon : MonoBehaviour
                 }
                 CapacityAmmo -= addAmmo;
                 CurrentAmmo += addAmmo;
-                
-                print("В обойме осталось " + CapacityAmmo);
-                print("Добавилось " + addAmmo);
             }
             else
             {
-                print("You not have a Ammo");
+                print("You not have/full Ammo");
             }
         }        
     }
@@ -90,7 +89,7 @@ public class Weapon : MonoBehaviour
     {
         _rigidbody.isKinematic = false;
         _rigidbody.useGravity = true;
-        _rigidbody.AddForce(Vector3.forward/10, ForceMode.Impulse);
+        _rigidbody.AddForce(Vector3.forward / 5, ForceMode.Impulse);
     }
 
     public void AddAmmo(float ammo)

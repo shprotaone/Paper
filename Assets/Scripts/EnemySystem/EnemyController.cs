@@ -20,9 +20,10 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
-        _agent = GetComponent<NavMeshAgent>();
         _player = GameObject.FindGameObjectWithTag("Player");
+        _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponentInChildren<Animator>();
+
         _agent.speed = _speed;
 
         if(_flamesContainer != null)
@@ -68,16 +69,37 @@ public class EnemyController : MonoBehaviour
     {
         GameManager.instance.AddScore(_points);
         GameManager.instance.DropItem(this.transform.position);
-        _explosion.Play();
-        _agent.isStopped = true;
-        _animator.gameObject.SetActive(false);
-        this.gameObject.GetComponent<Collider>().enabled = false;   //не лучшее решение, пока так
 
-        Destroy(this.gameObject,0.5f);
+        StartCoroutine(DeathAction());
+
     }
 
     private void ShowDamage(int health)
     {   if(_flamesContainer != null)     
         _flames[health].Play();
+    }
+
+    private IEnumerator DeathAction()
+    {
+        _explosion.Play();
+
+        if (_flamesContainer != null)
+        {
+            foreach (var flames in _flames)
+            {
+                flames.Stop();
+            }
+        }
+
+        _agent.isStopped = true;
+        _animator.gameObject.SetActive(false);
+
+        this.gameObject.GetComponent<Collider>().enabled = false;
+
+        yield return new WaitForSeconds(_explosion.main.duration);
+
+        Destroy(this.gameObject);
+
+        yield return null;
     }
 }

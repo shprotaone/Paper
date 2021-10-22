@@ -1285,12 +1285,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 3
-  _camera: {fileID: 0}
   _target: {fileID: 1499634377}
   _mainTransform: {fileID: 0}
-  _ignoreMask:
+  _floorMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 0
 --- !u!114 &7766397539743259440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2542,7 +2541,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4838933450186888610, guid: 48660f10865165442a00d6dec5a8106a, type: 3}
+  - {fileID: 2100000, guid: 62e25ef75a2216f418d06453c9ad15cb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

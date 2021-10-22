@@ -9,7 +9,12 @@ public class Item : MonoBehaviour
         StartCoroutine(DestroyItem());
     }
 
-    IEnumerator DestroyItem()
+    public virtual IEnumerator Action(Collider collider)
+    {
+        yield break;
+    }
+
+    private IEnumerator DestroyItem()
     {
         yield return new WaitForSeconds(10f);
         Destroy(this.gameObject);

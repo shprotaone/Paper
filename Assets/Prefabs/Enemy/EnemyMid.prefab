@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5360597155964611191}
   - component: {fileID: 6523428464988630239}
   - component: {fileID: 822523722759191402}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6478536213147159724, guid: 5f8472571ddd2724a8b5f5236e0f8be5, type: 3}
+  - {fileID: 2100000, guid: bd3930bd0f8fe7f4ba35ce1f08f84e1a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -88,7 +88,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3079475391707859175}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: metarig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7831964109631087444}
   - component: {fileID: 9124513985257396189}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Legs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,7 +159,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6478536213147159724, guid: 5f8472571ddd2724a8b5f5236e0f8be5, type: 3}
+  - {fileID: 2100000, guid: bd3930bd0f8fe7f4ba35ce1f08f84e1a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -212,7 +212,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5042651854158509357}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: pelvis.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,7 +242,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8018058216644870264}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: pelvis.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -273,7 +273,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2813503087328056833}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: toe.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -304,7 +304,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3647490161315192795}
   - component: {fileID: 3266777678200647364}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Animator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -356,7 +356,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8239547404771024551}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shin.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -387,7 +387,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5955866994865390292}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shin.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -418,7 +418,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5105417403426764915}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: thigh.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -451,7 +451,7 @@ GameObject:
   - component: {fileID: 7527838931135590293}
   - component: {fileID: 1262432927659858187}
   - component: {fileID: 7242665494701950420}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EnemyLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -496,11 +496,11 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
   - {fileID: -9103484930961366303, guid: 5f8472571ddd2724a8b5f5236e0f8be5, type: 3}
-  - {fileID: -6478536213147159724, guid: 5f8472571ddd2724a8b5f5236e0f8be5, type: 3}
+  - {fileID: 2100000, guid: bd3930bd0f8fe7f4ba35ce1f08f84e1a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -530,7 +530,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7573299793913448039}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: thigh.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -564,7 +564,8 @@ GameObject:
   - component: {fileID: 3210129236011333114}
   - component: {fileID: 1849759823319708762}
   - component: {fileID: 1635526000960744643}
-  m_Layer: 0
+  - component: {fileID: -1859818888435247448}
+  m_Layer: 10
   m_Name: EnemyMid
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -616,10 +617,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currName: mid
   _health: 2
-  _speed: 2
+  _speed: 3
   _points: 20
   _flamesContainer: {fileID: 7199910274904205721}
   _explosion: {fileID: 6557000058247904741}
+  _hitSound: {fileID: 0}
 --- !u!195 &1635526000960744643
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -642,6 +644,103 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!82 &-1859818888435247448
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6287649195431833162}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 7527352270099966637, guid: 78546352a6605eb4793efd62b609868c,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 263ce27bbe38a44469815ac906fea741, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.7
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 200
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.802
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6373164181576685694
 GameObject:
   m_ObjectHideFlags: 0
@@ -651,7 +750,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3004308860131697654}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: pelvis.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -682,7 +781,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1249397205856590622}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: spine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -716,7 +815,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9093143546702642563}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: toe.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -747,7 +846,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 738299108463956281}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Flames
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -779,7 +878,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2123017711440278056}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: toe.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -809,7 +908,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4359577772371977108}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: foot.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -840,7 +939,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7621081199427594973}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: toe.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -871,7 +970,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7458661787370712681}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: pelvis.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -901,7 +1000,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7142189787302775025}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: foot.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -930,6 +1029,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6632085972107162864}
     m_Modifications:
+    - target: {fileID: 6762342020735815173, guid: 7c6a703e1a49a5a42b3dd04dd1796fb8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6762342021137242026, guid: 7c6a703e1a49a5a42b3dd04dd1796fb8,
         type: 3}
       propertyPath: m_RootOrder
@@ -1004,6 +1108,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: explosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 6762342021137242029, guid: 7c6a703e1a49a5a42b3dd04dd1796fb8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6762342021233386821, guid: 7c6a703e1a49a5a42b3dd04dd1796fb8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c6a703e1a49a5a42b3dd04dd1796fb8, type: 3}
@@ -1086,6 +1200,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: flame_simple
       objectReference: {fileID: 0}
+    - target: {fileID: 1135569417815631220, guid: d9759caae6cc78943ad60b780b0364b6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9759caae6cc78943ad60b780b0364b6, type: 3}
 --- !u!4 &500754477818289229 stripped
@@ -1160,6 +1279,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: flame_simple (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135569417815631220, guid: d9759caae6cc78943ad60b780b0364b6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9759caae6cc78943ad60b780b0364b6, type: 3}

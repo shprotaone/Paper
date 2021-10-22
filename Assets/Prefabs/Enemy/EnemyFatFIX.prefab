@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 183780034004327017}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: thigh.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3264890833265648765}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: thigh.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,8 @@ GameObject:
   - component: {fileID: 9117013729285717353}
   - component: {fileID: 6526474596267411573}
   - component: {fileID: 5545084739020119718}
-  m_Layer: 0
+  - component: {fileID: 7059247945841204268}
+  m_Layer: 10
   m_Name: EnemyFatFIX
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -124,12 +125,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ea248267a45be64c8aeb3865d5c6010, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currName: 
-  _health: 0
-  _speed: 0
-  _points: 0
+  _currName: Fat
+  _health: 3
+  _speed: 2
+  _points: 30
   _flamesContainer: {fileID: 3847054013109344026}
   _explosion: {fileID: 4915109347819413084}
+  _hitSound: {fileID: 0}
 --- !u!195 &5545084739020119718
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -152,6 +154,103 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!82 &7059247945841204268
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1374947272982678608}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 7527352270099966637, guid: 78546352a6605eb4793efd62b609868c,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 263ce27bbe38a44469815ac906fea741, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.7
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 200
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.802
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1466415494428443493
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,7 +262,7 @@ GameObject:
   - component: {fileID: 3183690327312240015}
   - component: {fileID: 6184547214603746065}
   - component: {fileID: 2366044600848230350}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EnemyLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,11 +307,11 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 7402704306807897366, guid: 212770a3a15883d42bfba1fb972352fa, type: 3}
-  - {fileID: -905690159841262435, guid: 212770a3a15883d42bfba1fb972352fa, type: 3}
+  - {fileID: 2100000, guid: 9c944efe85013344394871cc0ccd08b7, type: 2}
   - {fileID: -6478536213147159724, guid: 212770a3a15883d42bfba1fb972352fa, type: 3}
   - {fileID: -876546973899608171, guid: 212770a3a15883d42bfba1fb972352fa, type: 3}
   m_StaticBatchInfo:
@@ -244,7 +343,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6124962289302436100}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: spine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,7 +377,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7919454729544860140}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: pelvis.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -309,7 +408,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4208518208797466521}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: toe.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -340,7 +439,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6422280126376497202}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: toe.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -370,7 +469,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8707331653930959246}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: foot.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -402,7 +501,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4105880396062543960}
   - component: {fileID: 5681938245578091212}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Animator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -454,7 +553,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 467536141051583729}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FlameContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -487,7 +586,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2581830887959727219}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: pelvis.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -517,7 +616,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2830753326157572843}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: foot.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -548,7 +647,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3284663559299025095}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: toe.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -581,7 +680,7 @@ GameObject:
   - component: {fileID: 1022974990649591917}
   - component: {fileID: 2220594865826942661}
   - component: {fileID: 5709662815894034800}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -659,7 +758,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2947119143227294030}
   - component: {fileID: 4248642412347635143}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Legs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -751,7 +850,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7992343898279619325}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: metarig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -782,7 +881,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 121005409479644983}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: pelvis.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -812,7 +911,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7160000775184004123}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: toe.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -842,7 +941,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3103861491443393122}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: pelvis.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -873,7 +972,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1653245038200004814}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shin.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -904,7 +1003,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3895117068217105597}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shin.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1008,6 +1107,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: flame_simple
       objectReference: {fileID: 0}
+    - target: {fileID: 1135569417815631220, guid: d9759caae6cc78943ad60b780b0364b6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9759caae6cc78943ad60b780b0364b6, type: 3}
 --- !u!4 &170144647395924663 stripped
@@ -1023,6 +1127,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1756153089078204138}
     m_Modifications:
+    - target: {fileID: 6762342020735815173, guid: 7c6a703e1a49a5a42b3dd04dd1796fb8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6762342021137242026, guid: 7c6a703e1a49a5a42b3dd04dd1796fb8,
         type: 3}
       propertyPath: m_RootOrder
@@ -1097,6 +1206,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: explosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 6762342021137242029, guid: 7c6a703e1a49a5a42b3dd04dd1796fb8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6762342021233386821, guid: 7c6a703e1a49a5a42b3dd04dd1796fb8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c6a703e1a49a5a42b3dd04dd1796fb8, type: 3}
@@ -1194,6 +1313,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: flame_simple (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1135569417815631220, guid: d9759caae6cc78943ad60b780b0364b6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9759caae6cc78943ad60b780b0364b6, type: 3}
 --- !u!4 &1303018080300553566 stripped
@@ -1283,6 +1407,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: flame_simple (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135569417815631220, guid: d9759caae6cc78943ad60b780b0364b6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9759caae6cc78943ad60b780b0364b6, type: 3}

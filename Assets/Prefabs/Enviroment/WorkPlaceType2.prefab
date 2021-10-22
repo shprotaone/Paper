@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &9024302791714885200
 Transform:
@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 2749413590714270932}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0.7}
   m_Children:
   - {fileID: 3856444445953694457}
   - {fileID: 3832102099221512265}
@@ -60,6 +60,10 @@ PrefabInstance:
     - target: {fileID: 1187395464441800, guid: bf955aa6cf5b1774180125d6b6201b35, type: 3}
       propertyPath: m_Name
       value: FilingCabinet_Drawer
+      objectReference: {fileID: 0}
+    - target: {fileID: 1187395464441800, guid: bf955aa6cf5b1774180125d6b6201b35, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4137810033084392, guid: bf955aa6cf5b1774180125d6b6201b35, type: 3}
       propertyPath: m_RootOrder
@@ -124,6 +128,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FilingCabinetSingle_Case
       objectReference: {fileID: 0}
+    - target: {fileID: 1699532382590010, guid: a4827c3c34b766743b61c499b08e4c75, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 4992569008144436, guid: a4827c3c34b766743b61c499b08e4c75, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -187,13 +195,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table_OfficeDesk
       objectReference: {fileID: 0}
+    - target: {fileID: 1412888549052842, guid: 683ef653b4b09b94993b7fd393c95978, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 4996593761235138, guid: 683ef653b4b09b94993b7fd393c95978, type: 3}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4996593761235138, guid: 683ef653b4b09b94993b7fd393c95978, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.79062
       objectReference: {fileID: 0}
     - target: {fileID: 4996593761235138, guid: 683ef653b4b09b94993b7fd393c95978, type: 3}
       propertyPath: m_LocalPosition.x
@@ -253,6 +261,10 @@ PrefabInstance:
     - target: {fileID: 1077311097942904, guid: 4f34910326e789e4f9b1781fe5d280e8, type: 3}
       propertyPath: m_Name
       value: FilingCabinetThreeStack_Case
+      objectReference: {fileID: 0}
+    - target: {fileID: 1077311097942904, guid: 4f34910326e789e4f9b1781fe5d280e8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4132520325593564, guid: 4f34910326e789e4f9b1781fe5d280e8, type: 3}
       propertyPath: m_RootOrder
@@ -329,6 +341,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Laptop_Off
       objectReference: {fileID: 0}
+    - target: {fileID: 1179622459644578, guid: f0c2d9c0796a76d428d02150209c6d26, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 4239241825834946, guid: f0c2d9c0796a76d428d02150209c6d26, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -391,6 +407,10 @@ PrefabInstance:
     - target: {fileID: 1438418636395350, guid: f459aae84ece7154f8d0ee90f554eeb4, type: 3}
       propertyPath: m_Name
       value: Chair_Office_Teal
+      objectReference: {fileID: 0}
+    - target: {fileID: 1438418636395350, guid: f459aae84ece7154f8d0ee90f554eeb4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4471998557447594, guid: f459aae84ece7154f8d0ee90f554eeb4, type: 3}
       propertyPath: m_RootOrder

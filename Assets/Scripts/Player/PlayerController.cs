@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
     private float _forwardAmount;
     private float _turnAmount;
 
+    private AudioSource _damageSound;
+
     #region properties
 
     public Vector3 ShootDirection { get; private set; }
@@ -46,6 +48,7 @@ public class PlayerController : MonoBehaviour
         _currentWeapon = GetComponentInChildren<Weapon>();
         _rigBuilder = GetComponent<RigBuilder>();
         _camera = Camera.main;
+        _damageSound = GetComponents<AudioSource>()[1];
 
         if(_gameManager == null)
         {
@@ -59,6 +62,7 @@ public class PlayerController : MonoBehaviour
         {
             Movement();
             Aimining();
+            Shooting();
         }
 
         ShootDirection = _target.transform.position;
@@ -68,7 +72,7 @@ public class PlayerController : MonoBehaviour
     {
         _horizontal = Input.GetAxisRaw("Horizontal");
         _vertical = Input.GetAxisRaw("Vertical");
-      
+        
         MoveDirectionDetector(_move);
 
         Vector3 movement = new Vector3(_horizontal, 0, _vertical).normalized;
@@ -112,6 +116,10 @@ public class PlayerController : MonoBehaviour
         _forwardAmount = localMove.z;
     }
 
+    private void Shooting()
+    {
+        _currentWeapon.Shooting();
+    }
     private void Aimining()
     {
         Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
@@ -131,10 +139,13 @@ public class PlayerController : MonoBehaviour
     {
         if (Health<=0)
         {
+            _damageSound.pitch = 0.5f;
+            _damageSound.Play();
+
             _playerIsDeath = true;
             _gameManager.PlayerIsDeath = _playerIsDeath;
             _rigBuilder.enabled = false;
-            _currentWeapon.transform.SetParent(_mainTransform.transform);
+
             _currentWeapon.ReleasingWeapon();
         }
     }
@@ -142,6 +153,7 @@ public class PlayerController : MonoBehaviour
     public void ApplyDamage(int damage)
     {
         _health -= damage;
+        _damageSound.Play();
         if(OnHealthChanged != null)
         {
             Death();
@@ -149,15 +161,17 @@ public class PlayerController : MonoBehaviour
         }       
     }
 
-    public void Healing(int heal)
+    public bool Healing(int heal)
     {
         if (_health < 3)
         {
             _health += heal;
             if (OnHealthChanged != null)
             {
-                OnHealthChanged.Invoke(_health,true);
+                OnHealthChanged.Invoke(_health, true);
             }
+            return true;
         }
+        else return false;
     }
 }

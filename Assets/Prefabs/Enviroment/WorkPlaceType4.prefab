@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &9024302791714885200
 Transform:
@@ -63,6 +63,10 @@ PrefabInstance:
     - target: {fileID: 1187395464441800, guid: bf955aa6cf5b1774180125d6b6201b35, type: 3}
       propertyPath: m_Name
       value: FilingCabinet_Drawer
+      objectReference: {fileID: 0}
+    - target: {fileID: 1187395464441800, guid: bf955aa6cf5b1774180125d6b6201b35, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4137810033084392, guid: bf955aa6cf5b1774180125d6b6201b35, type: 3}
       propertyPath: m_RootOrder
@@ -217,6 +221,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FilingCabinetSingle_Case
       objectReference: {fileID: 0}
+    - target: {fileID: 1699532382590010, guid: a4827c3c34b766743b61c499b08e4c75, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 4992569008144436, guid: a4827c3c34b766743b61c499b08e4c75, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -279,6 +287,10 @@ PrefabInstance:
     - target: {fileID: 1412888549052842, guid: 683ef653b4b09b94993b7fd393c95978, type: 3}
       propertyPath: m_Name
       value: Table_OfficeDesk
+      objectReference: {fileID: 0}
+    - target: {fileID: 1412888549052842, guid: 683ef653b4b09b94993b7fd393c95978, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4996593761235138, guid: 683ef653b4b09b94993b7fd393c95978, type: 3}
       propertyPath: m_RootOrder
@@ -347,6 +359,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlantPotLargeA
       objectReference: {fileID: 0}
+    - target: {fileID: 1176282754583594, guid: 5e6c0a296760d204c9e34091c18540fd, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 4804184306378262, guid: 5e6c0a296760d204c9e34091c18540fd, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -391,6 +407,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6624476549602584917, guid: 5e6c0a296760d204c9e34091c18540fd,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e6c0a296760d204c9e34091c18540fd, type: 3}
 --- !u!4 &3879378919834352712 stripped
@@ -409,6 +430,10 @@ PrefabInstance:
     - target: {fileID: 1608635005967820, guid: f14cbdd8ee1424e469bf00996f0eeaf1, type: 3}
       propertyPath: m_Name
       value: Chair_Office_Olive
+      objectReference: {fileID: 0}
+    - target: {fileID: 1608635005967820, guid: f14cbdd8ee1424e469bf00996f0eeaf1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4716762146290578, guid: f14cbdd8ee1424e469bf00996f0eeaf1, type: 3}
       propertyPath: m_RootOrder
@@ -473,6 +498,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Laptop_Closed
       objectReference: {fileID: 0}
+    - target: {fileID: 1189782351792700, guid: 20661e78605491946911818aa730569b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 4839676560386254, guid: 20661e78605491946911818aa730569b, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -536,6 +565,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Briefcase
       objectReference: {fileID: 0}
+    - target: {fileID: 1550026871934628, guid: 1f1181424ea20d64ea8a1054356fb358, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 4180469323904254, guid: 1f1181424ea20d64ea8a1054356fb358, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -598,6 +631,10 @@ PrefabInstance:
     - target: {fileID: 1176644185775656, guid: 5016dee2f2df1774e9c4ea33160fca26, type: 3}
       propertyPath: m_Name
       value: PlantTypeA
+      objectReference: {fileID: 0}
+    - target: {fileID: 1176644185775656, guid: 5016dee2f2df1774e9c4ea33160fca26, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4114935976081480, guid: 5016dee2f2df1774e9c4ea33160fca26, type: 3}
       propertyPath: m_RootOrder

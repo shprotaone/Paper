@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6762342020735815170}
   - component: {fileID: 6762342020735815168}
   - component: {fileID: 6762342020735815171}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: debris
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -284,7 +284,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -606,7 +606,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 0.2
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1362,7 +1362,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   ColorModule:
-    enabled: 0
+    enabled: 1
     gradient:
       serializedVersion: 2
       minMaxState: 1
@@ -1370,16 +1370,16 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 0.8392157}
-        key1: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 0}
+        key0: {r: 1, g: 1, b: 1, a: 1}
+        key1: {r: 1, g: 0.77367115, b: 0, a: 0.4627451}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65150
+        ctime0: 42811
+        ctime1: 65535
         ctime2: 0
         ctime3: 0
         ctime4: 0
@@ -4832,7 +4832,7 @@ GameObject:
   - component: {fileID: 6762342021137242026}
   - component: {fileID: 6762342021137242024}
   - component: {fileID: 6762342021137242027}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9771,7 +9771,7 @@ GameObject:
   - component: {fileID: 6762342021233386818}
   - component: {fileID: 6762342021233386816}
   - component: {fileID: 6762342021233386819}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9786,7 +9786,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6762342021233386821}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children: []
   m_Father: {fileID: 6762342021137242026}
@@ -10360,7 +10360,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 10
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -10735,7 +10735,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 10
+        scalar: 5
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -14536,7 +14536,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7570e6aab1fef774d9983758d7fd701b, type: 2}
+  - {fileID: 2100000, guid: ff42c297fc8c38643a2c084f44493891, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0

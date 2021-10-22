@@ -11,15 +11,27 @@ public class SpawnManager : MonoBehaviour
 
     private EnemyFactory _factory;
     private GameManager _gameManager;
+    private string[] _enemies;
 
     void Start()
     {
         _factory = new EnemyFactory();
         _factory.Init(_fillEnemy);
 
+        InitEnemies();
         _gameManager = GetComponent<GameManager>();
 
         StartCoroutine(SpawnEnemy());
+    }
+
+    private void InitEnemies()
+    {
+        _enemies = new string[4];
+
+        _enemies[0] = _factory.LightEnemyID;
+        _enemies[1] = _factory.MidEnemyID;
+        _enemies[2] = _factory.FatEnemyID;
+        _enemies[3] = _factory.BossID;
     }
 
     IEnumerator SpawnEnemy()
@@ -58,19 +70,33 @@ public class SpawnManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Вариант врага
+    /// Выбираем врага для спавна
     /// </summary>
     /// <returns></returns>
     private string EnemyVariable()
     {
-        string[] enemies = new string[4];
+        int enemyVar;
 
-        enemies[0] = _factory.FatEnemyID;
-        enemies[1] = _factory.LightEnemyID;
-        enemies[2] = _factory.MidEnemyID;
-        enemies[3] = _factory.BossID;
+        float _spawnChance = Random.value;
 
-        string result = enemies[Random.Range(0, enemies.Length)];
+        if (_spawnChance > 0.9)
+        {
+            enemyVar = 3;
+        }
+        else if (_spawnChance > 0.7 )
+        {
+            enemyVar = 2;
+        }
+        else if (_spawnChance > 0.4)
+        {
+            enemyVar = 1;
+        }
+        else
+        {
+           enemyVar = 0;
+        }
+
+        string result = _enemies[enemyVar];
 
         return result;
     }
@@ -85,4 +111,5 @@ public class SpawnManager : MonoBehaviour
             Destroy(_enemyContain.GetChild(i).gameObject);
         }
     }
+
 }

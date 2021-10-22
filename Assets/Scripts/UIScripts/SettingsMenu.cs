@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 using TMPro;
 
 public class SettingsMenu : MonoBehaviour
@@ -11,13 +12,21 @@ public class SettingsMenu : MonoBehaviour
 
     [SerializeField] private AudioMixer _audioMixer;
     [SerializeField] private TMP_Dropdown _resolutionDropdown;
-
+    
     private Resolution[] _resolutions;
+    private Slider[] _sliders;
+    private Toggle _fulllScreenToogle;
+    private int _resolutionIndex;
+    private bool _isFullScreen;
 
-    private void Start()
+    private void Awake()
     {
+        _sliders = GetComponentsInChildren<Slider>();
+        _fulllScreenToogle = GetComponentInChildren<Toggle>();
         AddResolutions();
+        LoadSettings();
     }
+
     public void SetMusic(float volume)
     {
         _audioMixer.SetFloat(musicName, volume);
@@ -31,11 +40,13 @@ public class SettingsMenu : MonoBehaviour
     public void SetFullscreen(bool isFullScreen)
     {
         Screen.fullScreen = isFullScreen;
+        _isFullScreen = isFullScreen;
     }
 
     public void SetResolution(int resolutionIndex)
     {
         Resolution resolution = _resolutions[resolutionIndex];
+        _resolutionIndex = resolutionIndex;
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
@@ -84,5 +95,18 @@ public class SettingsMenu : MonoBehaviour
         current.height = height;
 
         return current;
+    }
+
+    public void LoadSettings()
+    {        
+        _audioMixer.GetFloat(musicName, out float musicValue);
+        _audioMixer.GetFloat(sfxName, out float SFXValue);
+
+        _sliders[0].value = musicValue;
+        _sliders[1].value = SFXValue;
+        
+        _resolutionDropdown.value = _resolutionIndex;
+        _fulllScreenToogle.isOn = _isFullScreen;
+
     }
 }

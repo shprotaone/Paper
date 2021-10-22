@@ -3,7 +3,12 @@ guid: 8a1e7eeead7f5de45a624be6c7ab7bf1
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: froom_icebox
+    second: {fileID: 2100000, guid: cffa5dfd85d01aa4293e249ff623ff9d, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

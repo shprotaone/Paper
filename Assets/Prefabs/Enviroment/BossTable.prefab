@@ -17,7 +17,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &7641881578421637706
 Transform:
@@ -107,6 +107,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chair_Office_Violet
       objectReference: {fileID: 0}
+    - target: {fileID: 1290026134015930, guid: 74da286b950020745b667e6d613b1b8e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4349387208462378, guid: 74da286b950020745b667e6d613b1b8e, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -170,6 +174,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7641881578421637706}
     m_Modifications:
+    - target: {fileID: 160204, guid: 91e9ca4fbaac949e78348d5ba02b55bb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 167360, guid: 91e9ca4fbaac949e78348d5ba02b55bb, type: 3}
       propertyPath: m_Name
       value: Computer_01
