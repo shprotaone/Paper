@@ -505,7 +505,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioMixer: {fileID: 24100000, guid: 78546352a6605eb4793efd62b609868c, type: 2}
   _resolutionDropdown: {fileID: 88697588887414606}
-  _sliders: []
 --- !u!1 &88697588358807696
 GameObject:
   m_ObjectHideFlags: 0
@@ -595,7 +594,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1568174112}
         m_MethodName: SetSFX
         m_Mode: 0
         m_Arguments:
@@ -1378,7 +1377,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1568174112}
         m_MethodName: SetResolution
         m_Mode: 0
         m_Arguments:
@@ -1699,7 +1698,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1568174112}
         m_MethodName: SetFullscreen
         m_Mode: 0
         m_Arguments:
@@ -2132,7 +2131,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1568174112}
         m_MethodName: SetMusic
         m_Mode: 0
         m_Arguments:

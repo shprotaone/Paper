@@ -9,10 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1705459670660265675}
+  - component: {fileID: 5375450558015278639}
   m_Layer: 0
   m_Name: trash_can
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_TagString: Spawner
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
@@ -33,6 +34,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!65 &5375450558015278639
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2080894081026092145}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.51626354, y: 0.48304403, z: 0.52877414}
+  m_Center: {x: 0.0041701496, y: 0.0042408407, z: -0.0062550306}
 --- !u!1 &6394684808863911920
 GameObject:
   m_ObjectHideFlags: 0

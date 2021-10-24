@@ -38,14 +38,12 @@ public class Weapon : MonoBehaviour
 
     public void Shooting()
     {
-        if(Input.GetMouseButton(0) && Time.time >= _nextTimeToFire && CurrentAmmo > 0)
-        {
+        if(Time.time >= _nextTimeToFire && CurrentAmmo > 0)
+        {            
             _nextTimeToFire = Time.time + 1f / _fireRate;            
             Shoot();
             CurrentAmmo -= 1;
-        }
-
-        Reloading();        
+        }     
     }
 
     private void Shoot()
@@ -62,27 +60,25 @@ public class Weapon : MonoBehaviour
         _sounds[1].Play();
     }
 
-    private void Reloading()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
+    public void Reloading()
+    {        
+        if (CapacityAmmo > 0 && _maxAmmo != CurrentAmmo)
         {
-            if (CapacityAmmo >= 0 && _maxAmmo != CurrentAmmo)
-            {
-                _sounds[0].Play();
-                float addAmmo = _maxAmmo - CurrentAmmo;
+           _sounds[0].Play();
+           float addAmmo = _maxAmmo - CurrentAmmo;
                 
-                if (CapacityAmmo < addAmmo)
-                {
-                    addAmmo = CapacityAmmo;
-                }
-                CapacityAmmo -= addAmmo;
-                CurrentAmmo += addAmmo;
-            }
-            else
-            {
-                print("You not have/full Ammo");
-            }
-        }        
+           if (CapacityAmmo < addAmmo)
+           {
+               addAmmo = CapacityAmmo;
+           }
+           
+            CapacityAmmo -= addAmmo;
+            CurrentAmmo += addAmmo;
+        }
+        else
+        {
+            print("You not have/full Ammo");
+        }              
     }
 
     public void ReleasingWeapon()

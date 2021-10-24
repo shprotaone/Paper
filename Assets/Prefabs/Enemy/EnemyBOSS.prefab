@@ -437,7 +437,6 @@ MonoBehaviour:
   _points: 50
   _flamesContainer: {fileID: 7224696003031088556}
   _explosion: {fileID: 3463645140951452885}
-  _hitSound: {fileID: 0}
 --- !u!136 &2336516659268849562
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -460,7 +459,7 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3992208418208702637}
   m_Enabled: 1
-  m_AgentTypeID: 0
+  m_AgentTypeID: -1372625422
   m_Radius: 0.5
   m_Speed: 3.5
   m_Acceleration: 8

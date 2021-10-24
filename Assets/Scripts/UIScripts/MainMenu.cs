@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
@@ -9,6 +7,8 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject _pauseMenu;
     [SerializeField] private GameObject _settings;
     [SerializeField] private GameObject _gameGuide;
+    [SerializeField] private GameObject _confirmExit;
+    [SerializeField] private GameManager _gameManager;
 
     private int _idMainMenuScene = 0;
     private int _idGameScene = 1;
@@ -18,22 +18,27 @@ public class MainMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (_gameInPause)
+            if(_pauseMenu != null)
             {
-                Resume();
-            }
-            else
-            {
-                Pause();
-            }
+                if (_gameInPause)
+                {
+                    Resume();
+                }
+                else
+                {
+                    Pause();
+                }
+            }           
         }
     }
 
     public void Resume()
     {
         _pauseMenu.SetActive(false);
+        BackButton();
         Time.timeScale = 1f;
         _gameInPause = false;
+        _gameManager.GameInPause = _gameInPause;
     }
 
     public void Pause()
@@ -41,6 +46,7 @@ public class MainMenu : MonoBehaviour
         _pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         _gameInPause = true;
+        _gameManager.GameInPause = _gameInPause;     
     }
 
     public void StartGame()
@@ -50,8 +56,9 @@ public class MainMenu : MonoBehaviour
     }
 
     public void LoadMainMenu()
-    {       
-        SceneManager.LoadScene(_idMainMenuScene);
+    {
+        Resume();    
+        SceneManager.LoadScene(_idMainMenuScene);       
     }
 
     public void Settings()
@@ -84,7 +91,17 @@ public class MainMenu : MonoBehaviour
 
         if (_gameGuide != null)
         _gameGuide.SetActive(false);
+
+        if (_confirmExit != null)
+            _confirmExit.SetActive(false);
     }
 
-
+    public void ConfirmExitWindow()
+    {
+        _confirmExit.SetActive(true);
+    }
+    public void Guide()
+    {
+        _gameGuide.SetActive(true);
+    }
 }

@@ -11,7 +11,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float _points;
     [SerializeField] private GameObject _flamesContainer;
     [SerializeField] private ParticleSystem _explosion;
-    
+
     private NavMeshAgent _agent;
     private Animator _animator;
     private GameObject _player;    
@@ -67,11 +67,10 @@ public class EnemyController : MonoBehaviour
 
     private void DeathEnemy()
     {
-        GameManager.instance.AddScore(_points);
-        GameManager.instance.DropItem(this.transform.position);
-
+        GameManager.instance.AddScore(_points,_currName);
+        GameManager.instance.DropItem(this.transform.position,_currName);
+        
         StartCoroutine(DeathAction());
-
     }
 
     private void ShowDamage(int health)

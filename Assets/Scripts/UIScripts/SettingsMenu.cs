@@ -15,39 +15,17 @@ public class SettingsMenu : MonoBehaviour
     
     private Resolution[] _resolutions;
     private Slider[] _sliders;
-    private Toggle _fulllScreenToogle;
+    private Toggle _fullScreenToogle;
     private int _resolutionIndex;
     private bool _isFullScreen;
 
     private void Awake()
     {
         _sliders = GetComponentsInChildren<Slider>();
-        _fulllScreenToogle = GetComponentInChildren<Toggle>();
+        _fullScreenToogle = GetComponentInChildren<Toggle>();
+        
         AddResolutions();
         LoadSettings();
-    }
-
-    public void SetMusic(float volume)
-    {
-        _audioMixer.SetFloat(musicName, volume);
-    }
-
-    public void SetSFX(float volume)
-    {
-        _audioMixer.SetFloat(sfxName, volume);
-    }
-
-    public void SetFullscreen(bool isFullScreen)
-    {
-        Screen.fullScreen = isFullScreen;
-        _isFullScreen = isFullScreen;
-    }
-
-    public void SetResolution(int resolutionIndex)
-    {
-        Resolution resolution = _resolutions[resolutionIndex];
-        _resolutionIndex = resolutionIndex;
-        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
     private void AddResolutions()
@@ -70,7 +48,7 @@ public class SettingsMenu : MonoBehaviour
             string option = _resolutions[i].width + "x" + _resolutions[i].height;
             options.Add(option);
 
-            if(_resolutions[i].width == Screen.currentResolution.width &&
+            if (_resolutions[i].width == Screen.currentResolution.width &&
                _resolutions[i].height == Screen.currentResolution.height)
             {
                 currentResolutionIndex = i;
@@ -78,7 +56,6 @@ public class SettingsMenu : MonoBehaviour
         }
 
         _resolutionDropdown.AddOptions(options);
-        _resolutionDropdown.value = currentResolutionIndex;
         _resolutionDropdown.RefreshShownValue();
     }
 
@@ -88,7 +65,7 @@ public class SettingsMenu : MonoBehaviour
     /// <param name="width"></param>
     /// <param name="height"></param>
     /// <returns></returns>
-    private Resolution NewResolution(int width,int height)
+    private Resolution NewResolution(int width, int height)
     {
         Resolution current = new Resolution();
         current.width = width;
@@ -97,16 +74,48 @@ public class SettingsMenu : MonoBehaviour
         return current;
     }
 
-    public void LoadSettings()
-    {        
-        _audioMixer.GetFloat(musicName, out float musicValue);
-        _audioMixer.GetFloat(sfxName, out float SFXValue);
-
-        _sliders[0].value = musicValue;
-        _sliders[1].value = SFXValue;
-        
-        _resolutionDropdown.value = _resolutionIndex;
-        _fulllScreenToogle.isOn = _isFullScreen;
-
+    public void SetMusic(float volume)
+    {
+        _audioMixer.SetFloat(musicName, volume);
+        PlayerPrefs.SetFloat(musicName, volume);
     }
+
+    public void SetSFX(float volume)
+    {
+        _audioMixer.SetFloat(sfxName, volume);
+        PlayerPrefs.SetFloat(sfxName, volume);
+    }
+
+    public void SetFullscreen(bool isFullScreen)
+    {
+        Screen.fullScreen = isFullScreen;       
+        _isFullScreen = isFullScreen;
+        PlayerPrefs.SetInt("isFullScreen", _isFullScreen ? 1 : 0);
+    }
+
+    public void SetResolution(int resolutionIndex)
+    {
+        Resolution resolution = _resolutions[resolutionIndex];
+        _resolutionIndex = resolutionIndex;
+        _resolutionDropdown.value = _resolutionIndex;
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+        PlayerPrefs.SetInt("Resolution", _resolutionIndex);
+    }
+
+    public void LoadSettings()
+    {
+        float music = PlayerPrefs.GetFloat(musicName);
+        float sfx = PlayerPrefs.GetFloat(sfxName);
+
+        _audioMixer.SetFloat(musicName, music);
+        _audioMixer.SetFloat(sfxName, sfx);
+
+        _sliders[0].value = music;
+        _sliders[1].value = sfx;
+
+        _resolutionIndex = PlayerPrefs.GetInt("Resolution");
+        SetResolution(_resolutionIndex);
+        _fullScreenToogle.isOn = PlayerPrefs.GetInt("isFullScreen") == 1 ? true : false;
+    }
+
 }

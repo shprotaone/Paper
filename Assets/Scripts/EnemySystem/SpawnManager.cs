@@ -6,11 +6,19 @@ public class SpawnManager : MonoBehaviour
 {
     [SerializeField] private EnemyList _fillEnemy;
     [SerializeField] private GameObject[] _spawnPoint; 
-    [SerializeField] private Transform _enemyContain;
+    [SerializeField] private Transform _enemyContain;   
+    [SerializeField] private GameManager _gameManager;
+    [SerializeField] private PlayerController _player;
     [SerializeField] private float _spawnLimit = 20;
 
-    private EnemyFactory _factory;
-    private GameManager _gameManager;
+    [Range(0, 1)]
+    [SerializeField] private float _spawnChanceMid = 0.4f;
+    [Range(0, 1)]
+    [SerializeField] private float _spawnChanceFat = 0.7f;
+    [Range(0, 1)]
+    [SerializeField] private float _spawnChanceBoss = 0.9f;
+
+    private EnemyFactory _factory;    
     private string[] _enemies;
 
     void Start()
@@ -19,8 +27,6 @@ public class SpawnManager : MonoBehaviour
         _factory.Init(_fillEnemy);
 
         InitEnemies();
-        _gameManager = GetComponent<GameManager>();
-
         StartCoroutine(SpawnEnemy());
     }
 
@@ -66,7 +72,14 @@ public class SpawnManager : MonoBehaviour
     private int RandomPosition()
     {
         int result = Random.Range(0, _spawnPoint.Length);
-        return result;
+        if (CheckDistanceToPlayer(_spawnPoint[result].transform.position))
+        {
+            return result;
+        }
+        else
+        {
+            return RandomPosition();
+        }        
     }
 
     /// <summary>
@@ -79,15 +92,15 @@ public class SpawnManager : MonoBehaviour
 
         float _spawnChance = Random.value;
 
-        if (_spawnChance > 0.9)
+        if (_spawnChance > _spawnChanceBoss)
         {
             enemyVar = 3;
         }
-        else if (_spawnChance > 0.7 )
+        else if (_spawnChance > _spawnChanceFat )
         {
             enemyVar = 2;
         }
-        else if (_spawnChance > 0.4)
+        else if (_spawnChance > _spawnChanceMid)
         {
             enemyVar = 1;
         }
@@ -110,6 +123,17 @@ public class SpawnManager : MonoBehaviour
         {
             Destroy(_enemyContain.GetChild(i).gameObject);
         }
+    }
+
+    private bool CheckDistanceToPlayer(Vector3 spawner)
+    {
+        float distance = Vector3.Distance(_player.transform.position, spawner);
+       
+        if (distance > 15)
+        {
+            return true;
+        }
+        else return false;
     }
 
 }

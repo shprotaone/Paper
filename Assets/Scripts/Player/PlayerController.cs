@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.Animations.Rigging;
 using UnityEngine;
 
@@ -58,13 +56,12 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (!PlayerIsDeath)
+        if (!PlayerIsDeath && !_gameManager.GameInPause)
         {
             Movement();
             Aimining();
             Shooting();
-        }
-
+        }      
         ShootDirection = _target.transform.position;
     }
 
@@ -118,8 +115,13 @@ public class PlayerController : MonoBehaviour
 
     private void Shooting()
     {
+        if(Input.GetMouseButton(0))
         _currentWeapon.Shooting();
+
+        if (Input.GetKeyDown(KeyCode.R))
+            _currentWeapon.Reloading();
     }
+
     private void Aimining()
     {
         Ray ray = _camera.ScreenPointToRay(Input.mousePosition);

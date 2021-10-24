@@ -21,6 +21,8 @@ public class UISystem : MonoBehaviour
     [SerializeField] private GameObject _inputNameField;
     [SerializeField] private HighscoreTable _highscoreTable;
 
+    [SerializeField] private TMP_Text _errorText;
+
     private void Start()
     {
         OnEnable();
@@ -71,6 +73,7 @@ public class UISystem : MonoBehaviour
     private void UpdateHealth(int value,bool enable)
     {
         if (_playerController == null) return;
+        
         DrawLifes(value,enable);
         SubmitRecord();
     }
@@ -96,15 +99,44 @@ public class UISystem : MonoBehaviour
 
     public void SaveScore()
     {
-        _gameManager.NameForRecord = _inputNameField.GetComponent<TMP_InputField>().text;
+        bool correct;
+        string currentName;
 
-        if(_gameManager.NameForRecord == "")
+        currentName = CheckName(out correct);
+
+        if(correct)
         {
-            _gameManager.NameForRecord = "Unknown";
+            _gameManager.NameForRecord = currentName;
+            _errorText.text = "";
+            _highscoreTable.AddHighscoreEntry(_gameManager.Score, (int)_gameManager.InGameTime, _gameManager.NameForRecord);
+            _inputNameField.SetActive(false);
+            _highscoreTable.gameObject.SetActive(true);
         }
+    }
 
-        _highscoreTable.AddHighscoreEntry(_gameManager.Score, (int)_gameManager.InGameTime, _gameManager.NameForRecord);
-        _inputNameField.SetActive(false);
-        _highscoreTable.gameObject.SetActive(true);
+    private string CheckName(out bool correct)
+    {
+        string result = _inputNameField.GetComponent<TMP_InputField>().text;
+
+        if (result.Length <= 8)
+        {
+            _errorText.text = "Good Name!";
+            _errorText.color = Color.green;
+            correct = true;
+            return result;
+        }
+        else if (result.Length == 0)
+        {
+            result = "Unknown";
+            correct = true;
+            return result;
+        }
+        else
+        {
+            _errorText.text = "Name is very long, try again";
+            _errorText.color = Color.red;
+            correct = false;
+            return null;
+        }
     }
 }

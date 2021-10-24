@@ -8,6 +8,7 @@ TagManager:
   - Obstacle
   - Fluid
   - projectile
+  - Spawner
   layers:
   - Default
   - TransparentFX

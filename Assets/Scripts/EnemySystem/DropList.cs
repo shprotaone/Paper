@@ -4,21 +4,24 @@ using UnityEngine;
 
 public class DropList : MonoBehaviour
 {
-    [SerializeField] private GameObject[] _dropObject; 
+    [SerializeField] private GameObject[] _dropObject;
+    [Range(0, 1)]
+    [SerializeField] private float _chanceDropHealth = 0.9f;
+    [Range(0,1)]
+    [SerializeField] private float _chanceDropAmmo = 0.6f;
+
     // 0-Health, 1-ammo
 
     public GameObject Drop()
     {        
         float chance = Random.value;
 
-        if (chance > 0.95)
+        if (chance > _chanceDropHealth)
         {
-            Debug.Log(_dropObject[0]);
             return _dropObject[0];
         }
-        else if(chance > 0.8)
-        {
-            Debug.Log(_dropObject[1]);
+        else if(chance > _chanceDropAmmo)
+        {            
             return _dropObject[1];
         }
         else
