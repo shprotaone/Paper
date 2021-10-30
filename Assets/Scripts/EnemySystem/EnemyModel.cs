@@ -26,4 +26,3 @@ public class EnemyModel
         _currentSpeed = _description.Speed;
     }
 }
-//Честно не до конца понял для чего эта прослойка нужна пока что

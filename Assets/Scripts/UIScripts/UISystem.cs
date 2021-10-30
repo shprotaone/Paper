@@ -118,17 +118,17 @@ public class UISystem : MonoBehaviour
     {
         string result = _inputNameField.GetComponent<TMP_InputField>().text;
 
-        if (result.Length <= 8)
-        {
-            _errorText.text = "Good Name!";
-            _errorText.color = Color.green;
-            correct = true;
-            return result;
-        }
-        else if (result.Length == 0)
+        if (result == "")
         {
             result = "Unknown";
             correct = true;
+            return result;
+        }
+        else if (result.Length <= 8)
+        {
+            _errorText.text = "Good Name!";
+            _errorText.color = Color.green;
+            correct = true;            
             return result;
         }
         else

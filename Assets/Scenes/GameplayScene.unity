@@ -8634,7 +8634,7 @@ GameObject:
   - component: {fileID: 534909864}
   - component: {fileID: 534909863}
   m_Layer: 8
-  m_Name: Plane
+  m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28182,9 +28182,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '
-
-'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 002cd12a7054c1e49b2acea2f7cac0f6, type: 2}
   m_sharedMaterial: {fileID: 3238591160025205308, guid: 002cd12a7054c1e49b2acea2f7cac0f6,
@@ -28278,7 +28276,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4.3, y: -108.1}
+  m_AnchoredPosition: {x: 203, y: -10}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1731051125
@@ -36131,6 +36129,11 @@ PrefabInstance:
       propertyPath: _bulletContain
       value: 
       objectReference: {fileID: 1537239505}
+    - target: {fileID: 6592692138292355897, guid: 7b6b39d0515ebc840b079022c0fac1c9,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8186841509462902629, guid: 7b6b39d0515ebc840b079022c0fac1c9,
         type: 3}
       propertyPath: m_RootOrder

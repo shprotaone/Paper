@@ -74,7 +74,8 @@ public class EnemyController : MonoBehaviour
     }
 
     private void ShowDamage(int health)
-    {   if(_flamesContainer != null)     
+    {   
+        if(_flamesContainer != null)     
         _flames[health].Play();
     }
 

@@ -16,7 +16,7 @@ public class MainMenu : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !_gameManager.PlayerIsDeath)
         {
             if(_pauseMenu != null)
             {

@@ -632,10 +632,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlantTypeA
       objectReference: {fileID: 0}
-    - target: {fileID: 1176644185775656, guid: 5016dee2f2df1774e9c4ea33160fca26, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 4114935976081480, guid: 5016dee2f2df1774e9c4ea33160fca26, type: 3}
       propertyPath: m_RootOrder
       value: 7

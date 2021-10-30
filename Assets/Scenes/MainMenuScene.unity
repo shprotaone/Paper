@@ -1747,7 +1747,7 @@ RectTransform:
   - {fileID: 1283823999}
   - {fileID: 308910179}
   m_Father: {fileID: 1290724458}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -2958,7 +2958,7 @@ RectTransform:
   - {fileID: 1138192477}
   - {fileID: 1046654214}
   m_Father: {fileID: 1290724458}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -3182,11 +3182,11 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 714885122}
+  - {fileID: 978625412}
   - {fileID: 769927903}
   - {fileID: 1576192901}
-  - {fileID: 978625412}
-  - {fileID: 1985713483}
   - {fileID: 1281363330}
+  - {fileID: 1985713483}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8497,6 +8497,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HighscorePanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 5610642531835515912, guid: 721ffe43f38e5a149ae3c23a00853cbe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5610642531835515913, guid: 721ffe43f38e5a149ae3c23a00853cbe,
         type: 3}

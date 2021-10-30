@@ -8,22 +8,22 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Barrel
-    second: {instanceID: 0}
+    second: {fileID: 2100000, guid: 450a33eb98d214c4d82fa2ec09e0ed6f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Detail
-    second: {instanceID: 0}
+    second: {fileID: 2100000, guid: 64631dfe598ab4d48b048371b5e247a4, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Handle
-    second: {instanceID: 0}
+    second: {fileID: 2100000, guid: 604416fa38ce520488d2583603345ec1, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Main
-    second: {instanceID: 0}
+    second: {fileID: 2100000, guid: 9727d896558d6db4eaa929937fa4c072, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
