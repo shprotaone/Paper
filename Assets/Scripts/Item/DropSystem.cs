@@ -2,17 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DropList : MonoBehaviour
+public class DropSystem : MonoBehaviour
 {
     [SerializeField] private GameObject[] _dropObject;
+    // 0-Health, 1-ammo
     [Range(0, 1)]
     [SerializeField] private float _chanceDropHealth = 0.9f;
     [Range(0,1)]
     [SerializeField] private float _chanceDropAmmo = 0.6f;
 
-    // 0-Health, 1-ammo
+    private EnemyFactory _enemyFactory;
 
-    public GameObject Drop()
+    private void Start()
+    {
+        _enemyFactory = new EnemyFactory();
+    }
+
+    public void DropItem(Vector3 pos, string name)
+    {
+        if (name != _enemyFactory.LightEnemyID && name != _enemyFactory.MidEnemyID)
+        {
+            GameObject drop = Drop();
+            if (drop != null)
+            {
+                Instantiate(drop, pos, Quaternion.identity);
+            }
+        }
+    }
+
+    private GameObject Drop()
     {        
         float chance = Random.value;
 
@@ -29,4 +47,6 @@ public class DropList : MonoBehaviour
             return null;
         }
     }
+
+    
 }

@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject _settings;
     [SerializeField] private GameObject _gameGuide;
     [SerializeField] private GameObject _confirmExit;
-    [SerializeField] private GameManager _gameManager;
+    [SerializeField] private GameStats _gameStats;
 
     private int _idMainMenuScene = 0;
     private int _idGameScene = 1;
@@ -16,7 +16,7 @@ public class MainMenu : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !_gameManager.PlayerIsDeath)
+        if (Input.GetKeyDown(KeyCode.Escape) && !_gameStats.PlayerIsDeath)
         {
             if(_pauseMenu != null)
             {
@@ -38,7 +38,7 @@ public class MainMenu : MonoBehaviour
         BackButton();
         Time.timeScale = 1f;
         _gameInPause = false;
-        _gameManager.GameInPause = _gameInPause;
+        _gameStats.GameInPause = _gameInPause;
     }
 
     public void Pause()
@@ -46,7 +46,7 @@ public class MainMenu : MonoBehaviour
         _pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         _gameInPause = true;
-        _gameManager.GameInPause = _gameInPause;     
+        _gameStats.GameInPause = _gameInPause;     
     }
 
     public void StartGame()

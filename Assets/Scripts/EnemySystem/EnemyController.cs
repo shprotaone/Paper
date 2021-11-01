@@ -1,21 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField] private string _currName;
-    [SerializeField] private float _health;
-    [SerializeField] private float _speed;
-    [SerializeField] private float _points;
     [SerializeField] private GameObject _flamesContainer;
     [SerializeField] private ParticleSystem _explosion;
+    [SerializeField] private GameStats _gameStats;
+
+    private string _currName;
+    private float _health;
+    private float _speed;
+    private float _points;
+    private int _damage = 1;
 
     private NavMeshAgent _agent;
     private Animator _animator;
-    private GameObject _player;    
-    private int _damage = 1;
+    private KillCounter _killCount;
+    private DropSystem _dropList;
+    private GameObject _player;        
     private ParticleSystem[] _flames;
 
     private void Start()
@@ -23,6 +27,8 @@ public class EnemyController : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player");
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponentInChildren<Animator>();
+        _killCount = GetComponentInParent<KillCounter>();
+        _dropList = GetComponentInParent<DropSystem>();
 
         _agent.speed = _speed;
 
@@ -52,9 +58,8 @@ public class EnemyController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
-        {
-            
-            other.GetComponent<PlayerController>().ApplyDamage(_damage);
+        {           
+            other.GetComponent<HealthSystem>().ApplyDamage(_damage);
             DeathEnemy();            
         }
         else if (other.CompareTag("projectile"))
@@ -67,8 +72,10 @@ public class EnemyController : MonoBehaviour
 
     private void DeathEnemy()
     {
-        GameManager.instance.AddScore(_points,_currName);
-        GameManager.instance.DropItem(this.transform.position,_currName);
+        _killCount.AddCount(_currName);
+        _gameStats.AddScore(_points);
+        _gameStats.firstBlood = true;
+        _dropList.DropItem(this.transform.position,_currName);
         
         StartCoroutine(DeathAction());
     }

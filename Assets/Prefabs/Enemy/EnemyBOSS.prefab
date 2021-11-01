@@ -437,6 +437,8 @@ MonoBehaviour:
   _points: 50
   _flamesContainer: {fileID: 7224696003031088556}
   _explosion: {fileID: 3463645140951452885}
+  _gameManager: {fileID: 0}
+  _gameStats: {fileID: 11400000, guid: 03555ee3184eb324087dbf36f54f5856, type: 2}
 --- !u!136 &2336516659268849562
 CapsuleCollider:
   m_ObjectHideFlags: 0

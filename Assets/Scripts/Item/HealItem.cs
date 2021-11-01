@@ -22,7 +22,7 @@ public class HealItem : Item
 
     public override IEnumerator Action(Collider collider)
     {       
-        bool canHeal = collider.GetComponent<PlayerController>().Healing(_heal);
+        bool canHeal = collider.GetComponent<HealthSystem>().Healing(_heal);
 
         if (canHeal)
         {

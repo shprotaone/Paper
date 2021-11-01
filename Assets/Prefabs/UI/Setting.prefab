@@ -505,6 +505,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioMixer: {fileID: 24100000, guid: 78546352a6605eb4793efd62b609868c, type: 2}
   _resolutionDropdown: {fileID: 88697588887414606}
+  _settingsContainer: {fileID: 11400000, guid: b27f1541c7747da4f84fbc12e5ef922f, type: 2}
 --- !u!1 &88697588358807696
 GameObject:
   m_ObjectHideFlags: 0

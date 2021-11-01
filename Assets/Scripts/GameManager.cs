@@ -3,77 +3,38 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;   
+    [SerializeField] private GameStats _gameStats;
 
-    private DropList _dropItems;
-    private KillCounter _killCounter;
-    private EnemyFactory _enemyFactory;
+    private AudioSource _mainMusic;
     private float _inGameTime;
-    private float _score;
-    private float _spawnTime = 2f;
     private float _round = 30;
-    private bool _firstBlood = false;
 
     #region Properties
     public float InGameTime { get { return _inGameTime; } }
-    public float Score { get { return _score; } }
-    public float SpawnTime { get { return _spawnTime; } }
+    public float Score { get { return _gameStats.Score; } }
     public string NameForRecord { get; set; }
-    public bool PlayerIsDeath { get; set; }
-    public bool GameInPause { get; set; }
 
     #endregion
 
     private void Awake()
     {
-        _dropItems = GetComponent<DropList>();
-        _killCounter = GetComponent<KillCounter>();
-        _enemyFactory = new EnemyFactory();        
-
-        if (instance == null)
-        {
-            instance = this;
-        }
+        _gameStats.Restart();
+        _mainMusic = GetComponent<AudioSource>();
     }
 
     private void Update()
     {
-        if (!PlayerIsDeath)
+        if (!_gameStats.PlayerIsDeath)
         {
             Timer();
             Level();
+            StartMusic();
         }
     }
 
     private void Timer()
     {
         _inGameTime = _inGameTime + Time.deltaTime;
-    }
-
-    public void AddScore(float points,string name)
-    {
-        if (!PlayerIsDeath)
-        {
-            if (!_firstBlood)
-            {
-                StartMusic();
-            }
-            
-            _score += points;
-            _killCounter.AddCount(name);           
-        }           
-    }
-
-    public void DropItem(Vector3 pos, string name)
-    {
-        if (name != _enemyFactory.LightEnemyID && name != _enemyFactory.MidEnemyID)
-        {
-            GameObject drop = _dropItems.Drop();
-            if (drop != null)
-            {
-                Instantiate(drop, pos, Quaternion.identity);
-            }
-        }
     }
 
     /// <summary>
@@ -84,13 +45,15 @@ public class GameManager : MonoBehaviour
         if (_inGameTime > _round)
         {
             _round += 20;
-            _spawnTime -= 0.1f;
+            _gameStats.SpawnTime -= 0.1f;
         }
     }
 
-    private void StartMusic()
-    {        
-        this.GetComponent<AudioSource>().Play();
-        _firstBlood = true;
+    public void StartMusic()
+    {
+        if (_gameStats.firstBlood && !_mainMusic.isPlaying)
+        {
+            _mainMusic.Play();          
+        }        
     }
 }

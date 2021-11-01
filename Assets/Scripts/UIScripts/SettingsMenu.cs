@@ -12,12 +12,11 @@ public class SettingsMenu : MonoBehaviour
 
     [SerializeField] private AudioMixer _audioMixer;
     [SerializeField] private TMP_Dropdown _resolutionDropdown;
+    [SerializeField] private GameSettings _settingsContainer;
     
     private Resolution[] _resolutions;
     private Slider[] _sliders;
     private Toggle _fullScreenToogle;
-    private int _resolutionIndex;
-    private bool _isFullScreen;
 
     private void Awake()
     {
@@ -77,35 +76,37 @@ public class SettingsMenu : MonoBehaviour
     public void SetMusic(float volume)
     {
         _audioMixer.SetFloat(musicName, volume);
-        PlayerPrefs.SetFloat(musicName, volume);
+        _settingsContainer.music = volume;
     }
 
     public void SetSFX(float volume)
     {
         _audioMixer.SetFloat(sfxName, volume);
-        PlayerPrefs.SetFloat(sfxName, volume);
+        _settingsContainer.sfx = volume;
     }
 
     public void SetFullscreen(bool isFullScreen)
     {
         Screen.fullScreen = isFullScreen;       
-        _isFullScreen = isFullScreen;
-        PlayerPrefs.SetInt("isFullScreen", _isFullScreen ? 1 : 0);
+        _settingsContainer.fullScreen = isFullScreen;;
     }
 
     public void SetResolution(int resolutionIndex)
     {
         Resolution resolution = _resolutions[resolutionIndex];
-        _resolutionIndex = resolutionIndex;
-        _resolutionDropdown.value = _resolutionIndex;
+        _resolutionDropdown.value = resolutionIndex;
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
-        PlayerPrefs.SetInt("Resolution", _resolutionIndex);
+        _settingsContainer.resolution = resolutionIndex;
     }
 
     public void LoadSettings()
     {
-        float music = PlayerPrefs.GetFloat(musicName);
-        float sfx = PlayerPrefs.GetFloat(sfxName);
+        float music = _settingsContainer.music;
+        float sfx = _settingsContainer.sfx;
+        int resolution = _settingsContainer.resolution;
+        bool fullScreen = _settingsContainer.fullScreen;
+
+        _fullScreenToogle.isOn = fullScreen;
 
         _audioMixer.SetFloat(musicName, music);
         _audioMixer.SetFloat(sfxName, sfx);
@@ -113,9 +114,6 @@ public class SettingsMenu : MonoBehaviour
         _sliders[0].value = music;
         _sliders[1].value = sfx;
 
-        _resolutionIndex = PlayerPrefs.GetInt("Resolution");
-        SetResolution(_resolutionIndex);
-        _fullScreenToogle.isOn = PlayerPrefs.GetInt("isFullScreen") == 1 ? true : false;
+        SetResolution(resolution);
     }
-
 }

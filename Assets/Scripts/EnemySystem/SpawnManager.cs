@@ -7,7 +7,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private EnemyList _fillEnemy;
     [SerializeField] private GameObject[] _spawnPoint; 
     [SerializeField] private Transform _enemyContain;   
-    [SerializeField] private GameManager _gameManager;
+    [SerializeField] private GameStats _gameStats;
     [SerializeField] private PlayerController _player;
     [SerializeField] private float _spawnLimit = 20;
 
@@ -42,9 +42,9 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator SpawnEnemy()
     {
-        while (!_gameManager.PlayerIsDeath)
+        while (!_gameStats.PlayerIsDeath)
         {
-            yield return new WaitForSeconds(_gameManager.SpawnTime);
+            yield return new WaitForSeconds(_gameStats.SpawnTime);
             if(_spawnLimit > _enemyContain.transform.childCount)
             {
                 CreateEnemy(EnemyVariable(), RandomPosition());
@@ -57,11 +57,12 @@ public class SpawnManager : MonoBehaviour
     {
         EnemyModel enemyModel = _factory.CreateEnemy(name);              //создаем врага
         var obj = enemyModel.Description.Prefab;                         //определяем префаб
-        EnemyController stats = obj.GetComponent<EnemyController>();     //Инициализируем характеристики   
 
-        stats.Fill(enemyModel);                                          //заполняем характеристики
+        GameObject enemy = Instantiate(obj, _spawnPoint[pos].transform.position, Quaternion.identity);   //определяем позицию для спавна
+        EnemyController stats = enemy.GetComponent<EnemyController>();   //Инициализируем характеристики   
 
-        GameObject enemy = Instantiate(obj, _spawnPoint[pos].transform.position,Quaternion.identity);   //определяем позицию для спавна
+        stats.Fill(enemyModel);                                          //заполняем характеристики   
+
         enemy.transform.SetParent(_enemyContain);                        //Присваиваем родителя
     }
 

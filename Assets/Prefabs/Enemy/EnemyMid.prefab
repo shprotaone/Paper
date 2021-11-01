@@ -621,7 +621,8 @@ MonoBehaviour:
   _points: 20
   _flamesContainer: {fileID: 7199910274904205721}
   _explosion: {fileID: 6557000058247904741}
-  _hitSound: {fileID: 0}
+  _gameManager: {fileID: 0}
+  _gameStats: {fileID: 11400000, guid: 03555ee3184eb324087dbf36f54f5856, type: 2}
 --- !u!195 &1635526000960744643
 NavMeshAgent:
   m_ObjectHideFlags: 0

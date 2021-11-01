@@ -4,40 +4,27 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public event Action<int,bool> OnHealthChanged;
-
     [SerializeField] private float _speed;    
     [SerializeField] private GameObject _target;
     [SerializeField] private GameObject _mainTransform;
     [SerializeField] private LayerMask _floorMask;
+    [SerializeField] private GameStats _gameStats;
 
     private Camera _camera;
     private CharacterController _characterController;
     private RigBuilder _rigBuilder;
     private Weapon _currentWeapon;
-    private GameManager _gameManager;
-    private int _health = 3;
-    private bool _playerIsDeath;
-
-    private Vector3 _camForward;
-    private Vector3 _move;
-    private Vector3 _moveInput;
+    private HealthSystem _health;
 
     private float _horizontal;
     private float _vertical;
-    private float _forwardAmount;
-    private float _turnAmount;
-
-    private AudioSource _damageSound;
 
     #region properties
 
     public Vector3 ShootDirection { get; private set; }
-    public float InputX { get { return _forwardAmount; } }
-    public float InputY { get { return _turnAmount; } }
-    public int Health { get { return _health; } }
-    public bool PlayerIsDeath { get { return _playerIsDeath; } }
-
+    public float Horizontal { get { return _horizontal; } }
+    public float Vertical { get { return _vertical; } }
+    public bool PlayerIsDeath { get { return _gameStats.PlayerIsDeath; } }
     #endregion
 
     private void Start()
@@ -45,22 +32,21 @@ public class PlayerController : MonoBehaviour
         _characterController = GetComponent<CharacterController>();
         _currentWeapon = GetComponentInChildren<Weapon>();
         _rigBuilder = GetComponent<RigBuilder>();
+        _health = GetComponent<HealthSystem>();        
         _camera = Camera.main;
-        _damageSound = GetComponents<AudioSource>()[1];
-
-        if(_gameManager == null)
-        {
-            _gameManager = GameManager.instance;
-        }
     }
 
     private void Update()
     {
-        if (!PlayerIsDeath && !_gameManager.GameInPause)
+        if (!_health.PlayerIsDeath && !_gameStats.GameInPause)
         {
             Movement();
             Aimining();
             Shooting();
+        } 
+        else if (_health.PlayerIsDeath)
+        {
+            Death();
         }      
         ShootDirection = _target.transform.position;
     }
@@ -69,48 +55,9 @@ public class PlayerController : MonoBehaviour
     {
         _horizontal = Input.GetAxisRaw("Horizontal");
         _vertical = Input.GetAxisRaw("Vertical");
-        
-        MoveDirectionDetector(_move);
 
         Vector3 movement = new Vector3(_horizontal, 0, _vertical).normalized;
         _characterController.Move(movement * _speed * Time.deltaTime);
-    }
-
-    /// <summary>
-    /// определение направления движения для анимации
-    /// </summary>
-    /// <param name="move"></param>
-    private void MoveDirectionDetector(Vector3 move)
-    {
-        if (_camera.transform != null)
-        {
-            _camForward = Vector3.Scale(_camera.transform.up, new Vector3(1, 0, 1)).normalized;
-            _move = _vertical * _camForward + _horizontal * _camera.transform.right;
-        }
-        else
-        {
-            _move = _vertical * Vector3.forward + _horizontal * Vector3.right;
-        }
-
-        if (_move.magnitude > 1)
-        {
-            move.Normalize();
-        }
-
-        this._moveInput = move;
-
-        InverseAnimationInput();
-    }
-
-    /// <summary>
-    /// инверсия данных для анимации
-    /// </summary>
-    private void InverseAnimationInput()
-    {
-        Vector3 localMove = transform.InverseTransformDirection(_moveInput);
-        _turnAmount = localMove.x;
-
-        _forwardAmount = localMove.z;
     }
 
     private void Shooting()
@@ -119,7 +66,7 @@ public class PlayerController : MonoBehaviour
         _currentWeapon.Shooting();
 
         if (Input.GetKeyDown(KeyCode.R))
-            _currentWeapon.Reloading();
+        _currentWeapon.Reloading();
     }
 
     private void Aimining()
@@ -139,41 +86,10 @@ public class PlayerController : MonoBehaviour
 
     private void Death()
     {
-        if (Health<=0)
-        {
-            _damageSound.pitch = 0.5f;
-            _damageSound.Play();
+        _gameStats.PlayerIsDeath = _health.PlayerIsDeath;
+        
+        _rigBuilder.enabled = false;
 
-            _playerIsDeath = true;
-            _gameManager.PlayerIsDeath = _playerIsDeath;
-            _rigBuilder.enabled = false;
-
-            _currentWeapon.ReleasingWeapon();
-        }
-    }
-
-    public void ApplyDamage(int damage)
-    {
-        _health -= damage;
-        _damageSound.Play();
-        if(OnHealthChanged != null)
-        {
-            Death();
-            OnHealthChanged.Invoke(_health,false);
-        }       
-    }
-
-    public bool Healing(int heal)
-    {
-        if (_health < 3)
-        {
-            _health += heal;
-            if (OnHealthChanged != null)
-            {
-                OnHealthChanged.Invoke(_health, true);
-            }
-            return true;
-        }
-        else return false;
+        _currentWeapon.ReleasingWeapon();
     }
 }

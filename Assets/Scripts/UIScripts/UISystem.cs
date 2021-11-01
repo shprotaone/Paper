@@ -6,7 +6,7 @@ using TMPro;
 public class UISystem : MonoBehaviour
 {
     [SerializeField] private GameObject[] _hearts;
-    [SerializeField] private PlayerController _playerController;
+    [SerializeField] private HealthSystem _healthSystem;
     [SerializeField] private GameManager _gameManager;
     [SerializeField] private Weapon _weapon;
 
@@ -31,7 +31,7 @@ public class UISystem : MonoBehaviour
 
     private void Update()
     {
-        if (!_playerController.PlayerIsDeath)       //разобратся с уведомлениями о смерти
+        if (!_healthSystem.PlayerIsDeath)       //разобратся с уведомлениями о смерти
         {
             DrawAmmo();
             DrawTime();
@@ -41,12 +41,12 @@ public class UISystem : MonoBehaviour
 
     private void OnEnable()
     {
-        _playerController.OnHealthChanged += UpdateHealth;
+        _healthSystem.OnHealthChanged += UpdateHealth;
     }
 
     private void OnDisable()
     {
-        _playerController.OnHealthChanged -= UpdateHealth;
+        _healthSystem.OnHealthChanged -= UpdateHealth;
     }
 
     private void DrawLifes(int value,bool activate)
@@ -67,12 +67,12 @@ public class UISystem : MonoBehaviour
     private void DrawAmmo()
     {
         _capacityAmmoText.text = _weapon.CapacityAmmo.ToString();
-        _ammoView.position = _playerController.transform.position + _offsetAmmoView;
+        _ammoView.position = _healthSystem.transform.position + _offsetAmmoView;
     }
 
     private void UpdateHealth(int value,bool enable)
     {
-        if (_playerController == null) return;
+        if (_healthSystem == null) return;
         
         DrawLifes(value,enable);
         SubmitRecord();
@@ -91,7 +91,7 @@ public class UISystem : MonoBehaviour
 
     private void SubmitRecord()
     {
-        if (_playerController.PlayerIsDeath)
+        if (_healthSystem.PlayerIsDeath)
         {
             _inputNameField.SetActive(true);
         }       
