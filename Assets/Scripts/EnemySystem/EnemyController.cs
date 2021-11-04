@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : MonoCache
 {
     [SerializeField] private GameObject _flamesContainer;
     [SerializeField] private ParticleSystem _explosion;
@@ -38,7 +38,7 @@ public class EnemyController : MonoBehaviour
         }       
     }
 
-    private void Update()
+    public override void OnTick()
     {
         _agent.SetDestination(_player.transform.position);
     }

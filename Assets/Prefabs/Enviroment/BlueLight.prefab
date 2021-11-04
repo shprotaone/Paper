@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5500883999283169724}
   - component: {fileID: 5500883999283169725}
   m_Layer: 0
-  m_Name: Spot Light
+  m_Name: BlueLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,8 +43,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 0.6166341, g: 0.774155, b: 0.8773585, a: 1}
-  m_Intensity: 30
-  m_Range: 30
+  m_Intensity: 10
+  m_Range: 20
   m_SpotAngle: 156.94455
   m_InnerSpotAngle: 67.66787
   m_CookieSize: 10
@@ -82,10 +82,10 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 0
+  m_BounceIntensity: 2
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}

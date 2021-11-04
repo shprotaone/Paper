@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoCache
 {
     [SerializeField] private GameStats _gameStats;
 
@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 
     #region Properties
     public float InGameTime { get { return _inGameTime; } }
-    public float Score { get { return _gameStats.Score; } }
+    public float Score { get { return _gameStats.score; } }
     public string NameForRecord { get; set; }
 
     #endregion
@@ -22,9 +22,9 @@ public class GameManager : MonoBehaviour
         _mainMusic = GetComponent<AudioSource>();
     }
 
-    private void Update()
+    public override void OnTick()
     {
-        if (!_gameStats.PlayerIsDeath)
+        if (!_gameStats.playerIsDeath)
         {
             Timer();
             Level();
@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
         if (_inGameTime > _round)
         {
             _round += 20;
-            _gameStats.SpawnTime -= 0.1f;
+            _gameStats.spawnTime -= 0.1f;
         }
     }
 

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerAnimationController : MonoBehaviour
+public class PlayerAnimationController : MonoCache
 {
     private Animator _animator;
     private PlayerController _playerController;
@@ -26,7 +26,7 @@ public class PlayerAnimationController : MonoBehaviour
         _camera = Camera.main;
     }
 
-    private void Update()
+    public override void OnTick()
     {
         _animator.SetFloat(_moveX, _forwardAmount);
         _animator.SetFloat(_moveY, _turnAmount);

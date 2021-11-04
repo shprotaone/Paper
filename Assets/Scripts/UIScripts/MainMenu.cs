@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+public class MainMenu : MonoCache
 {
     [SerializeField] private GameObject _higscoreTable;
     [SerializeField] private GameObject _pauseMenu;
@@ -14,9 +14,9 @@ public class MainMenu : MonoBehaviour
     private int _idGameScene = 1;
     private bool _gameInPause = false;
 
-    private void Update()
+    public override void OnTick()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !_gameStats.PlayerIsDeath)
+        if (Input.GetKeyDown(KeyCode.Escape) && !_gameStats.playerIsDeath)
         {
             if(_pauseMenu != null)
             {
@@ -38,7 +38,7 @@ public class MainMenu : MonoBehaviour
         BackButton();
         Time.timeScale = 1f;
         _gameInPause = false;
-        _gameStats.GameInPause = _gameInPause;
+        _gameStats.gameInPause = _gameInPause;
     }
 
     public void Pause()
@@ -46,7 +46,7 @@ public class MainMenu : MonoBehaviour
         _pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         _gameInPause = true;
-        _gameStats.GameInPause = _gameInPause;     
+        _gameStats.gameInPause = _gameInPause;     
     }
 
     public void StartGame()

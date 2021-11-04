@@ -2,7 +2,7 @@
 using UnityEngine.Animations.Rigging;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoCache
 {
     [SerializeField] private float _speed;    
     [SerializeField] private GameObject _target;
@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     public Vector3 ShootDirection { get; private set; }
     public float Horizontal { get { return _horizontal; } }
     public float Vertical { get { return _vertical; } }
-    public bool PlayerIsDeath { get { return _gameStats.PlayerIsDeath; } }
+    public bool PlayerIsDeath { get { return _gameStats.playerIsDeath; } }
     #endregion
 
     private void Start()
@@ -36,9 +36,9 @@ public class PlayerController : MonoBehaviour
         _camera = Camera.main;
     }
 
-    private void Update()
+    public override void OnTick()
     {
-        if (!_health.PlayerIsDeath && !_gameStats.GameInPause)
+        if (!_health.PlayerIsDeath && !_gameStats.gameInPause)
         {
             Movement();
             Aimining();
@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
 
     private void Death()
     {
-        _gameStats.PlayerIsDeath = _health.PlayerIsDeath;
+        _gameStats.playerIsDeath = _health.PlayerIsDeath;
         
         _rigBuilder.enabled = false;
 

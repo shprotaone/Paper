@@ -21,7 +21,7 @@ public class Bullet : MonoBehaviour
         StopAllCoroutines();
     }
 
-    private void Update()
+    public void Update()
     {
         transform.position += _shootDirection * _bulletSpeed * Time.deltaTime;        
     }

@@ -97,6 +97,9 @@ public class UISystem : MonoBehaviour
         }       
     }
 
+    /// <summary>
+    /// То что ниже перенсти в отдельный скрипт и повесить на InputField
+    /// </summary>
     public void SaveScore()
     {
         bool correct;
