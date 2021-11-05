@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
 
     public void Update()
     {
-        transform.position += _shootDirection * _bulletSpeed * Time.deltaTime;        
+        this.transform.position += _shootDirection * _bulletSpeed * Time.deltaTime;        
     }
 
     private void OnTriggerEnter(Collider other)

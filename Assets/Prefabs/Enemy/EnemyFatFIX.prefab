@@ -125,13 +125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ea248267a45be64c8aeb3865d5c6010, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currName: Fat
-  _health: 3
-  _speed: 2
-  _points: 30
   _flamesContainer: {fileID: 3847054013109344026}
   _explosion: {fileID: 4915109347819413084}
-  _gameManager: {fileID: 0}
   _gameStats: {fileID: 11400000, guid: 03555ee3184eb324087dbf36f54f5856, type: 2}
 --- !u!195 &5545084739020119718
 NavMeshAgent:
@@ -311,10 +306,10 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 7402704306807897366, guid: 212770a3a15883d42bfba1fb972352fa, type: 3}
+  - {fileID: 2100000, guid: 616814fc6ecbd1f46b470ea25b5570a5, type: 2}
   - {fileID: 2100000, guid: 9c944efe85013344394871cc0ccd08b7, type: 2}
-  - {fileID: -6478536213147159724, guid: 212770a3a15883d42bfba1fb972352fa, type: 3}
-  - {fileID: -876546973899608171, guid: 212770a3a15883d42bfba1fb972352fa, type: 3}
+  - {fileID: -3746807463870966883, guid: 57dbf30b40c41b148aa4238ef1b98b53, type: 3}
+  - {fileID: -9103484930961366303, guid: 898b5dd4dfea9654e81c7073c7cea366, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

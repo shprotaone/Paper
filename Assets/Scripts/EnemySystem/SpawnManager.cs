@@ -42,9 +42,9 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator SpawnEnemy()
     {
-        while (!_gameStats.playerIsDeath)
+        while (!_gameStats.PlayerIsDeath)
         {
-            yield return new WaitForSeconds(_gameStats.spawnTime);
+            yield return new WaitForSeconds(_gameStats.SpawnTime);
             if(_spawnLimit > _enemyContain.transform.childCount)
             {
                 CreateEnemy(EnemyVariable(), RandomPosition());

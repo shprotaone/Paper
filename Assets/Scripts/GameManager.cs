@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class GameManager : MonoCache
+public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameStats _gameStats;
 
@@ -9,22 +9,15 @@ public class GameManager : MonoCache
     private float _inGameTime;
     private float _round = 30;
 
-    #region Properties
-    public float InGameTime { get { return _inGameTime; } }
-    public float Score { get { return _gameStats.score; } }
-    public string NameForRecord { get; set; }
-
-    #endregion
-
     private void Awake()
     {
         _gameStats.Restart();
         _mainMusic = GetComponent<AudioSource>();
     }
 
-    public override void OnTick()
+    private void Update()
     {
-        if (!_gameStats.playerIsDeath)
+        if (!_gameStats.PlayerIsDeath)
         {
             Timer();
             Level();
@@ -34,7 +27,7 @@ public class GameManager : MonoCache
 
     private void Timer()
     {
-        _inGameTime = _inGameTime + Time.deltaTime;
+        _gameStats.InGameTime = _gameStats.InGameTime + Time.deltaTime;
     }
 
     /// <summary>
@@ -42,16 +35,17 @@ public class GameManager : MonoCache
     /// </summary>
     private void Level()
     {
-        if (_inGameTime > _round)
+        if (_gameStats.InGameTime > _round)
         {
             _round += 20;
-            _gameStats.spawnTime -= 0.1f;
+            _gameStats.SpawnTimeDecrease();
+            print("Decrease");
         }
     }
 
     public void StartMusic()
     {
-        if (_gameStats.firstBlood && !_mainMusic.isPlaying)
+        if (_gameStats.FirstBlood && !_mainMusic.isPlaying)
         {
             _mainMusic.Play();          
         }        

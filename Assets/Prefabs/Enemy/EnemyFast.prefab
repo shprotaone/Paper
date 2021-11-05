@@ -87,7 +87,7 @@ MeshRenderer:
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
+  m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
@@ -175,13 +175,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ea248267a45be64c8aeb3865d5c6010, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currName: light
-  _health: 1
-  _speed: 4
-  _points: 10
   _flamesContainer: {fileID: 0}
   _explosion: {fileID: 302710972928409082}
-  _gameManager: {fileID: 0}
   _gameStats: {fileID: 11400000, guid: 03555ee3184eb324087dbf36f54f5856, type: 2}
 --- !u!195 &-963771660238402160
 NavMeshAgent:

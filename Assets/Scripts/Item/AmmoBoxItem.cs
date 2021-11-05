@@ -25,7 +25,7 @@ public class AmmoBoxItem : Item
         _pickSound.Play();
         gameObject.transform.GetChild(0).gameObject.SetActive(false);
         
-        collider.GetComponentInChildren<Weapon>().AddAmmo(_ammo);
+        collider.GetComponentInChildren<AmmoSystem>().IncreaseAmmo(_ammo);
         gameObject.GetComponent<Collider>().enabled = false;
 
         yield return new WaitForSeconds(_pickSound.clip.length);

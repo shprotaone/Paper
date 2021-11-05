@@ -1,25 +1,52 @@
 ﻿using UnityEngine;
+using System;
 
 [CreateAssetMenu(fileName = "Enemy", menuName = "CreateGameStats", order = 53)]
 public class GameStats : ScriptableObject
 {
-    public float spawnTime = 2;
-    public float score = 0;
-    public bool playerIsDeath = false;
-    public bool gameInPause = false;
-    public bool firstBlood;
+    public event Action<bool> OnDeath;
+
+    [SerializeField] private float _spawnTime = 2;
+    [SerializeField] private float _score = 0;
+    [SerializeField] private bool _playerIsDeath = false;
+    
+    private float _inGameTime;
+    private bool _gameInPause = false;
+    private bool _firstBlood;
+
+    public float InGameTime { get { return _inGameTime; } set { _inGameTime = value; } }
+    public bool GameInPause { get { return _gameInPause; } set { _gameInPause = value; } }
+    public float SpawnTime { get { return _spawnTime; } }
+    public bool PlayerIsDeath { get { return _playerIsDeath; } }
+    public float Score { get { return _score; } }
+    public bool FirstBlood { get { return _firstBlood; } set { _firstBlood = value; } }
 
     public void Restart()
     {       
-        spawnTime = 2;
-        score = 0;
-        playerIsDeath = false;
-        gameInPause = false;
-        firstBlood = false;
+        _spawnTime = 2;
+        _score = 0;
+        _playerIsDeath = false;
+        _gameInPause = false;
+        _firstBlood = false;
+        InGameTime = 0;
     }
 
     public void AddScore(float score)
     {
-        this.score += score;
+        this._score += score;
+    }
+
+    public void SpawnTimeDecrease()
+    {
+        _spawnTime -= 0.1f;
+    }
+
+    public void PlayerDeathInv(bool state)
+    {
+        if (OnDeath != null)
+        {            
+            OnDeath.Invoke(state);
+            _playerIsDeath = true;
+        }
     }
 }

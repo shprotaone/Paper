@@ -15,7 +15,7 @@ public class CircularProgressBar : MonoBehaviour {
 	[SerializeField] private float m_SizeOfNotch = 5;
 	[Range(0,1)][SerializeField] private float m_FillAmount = 0.0f;
 
-	[SerializeField] private Weapon weapon;
+	[SerializeField] private AmmoSystem _ammoSystem;
 
 	private Image m_Image;
 	private List<Image> m_ProgressToFill = new List<Image> ();
@@ -71,7 +71,7 @@ public class CircularProgressBar : MonoBehaviour {
 
 	private float TranslateAmmo()
     {
-		float result = Mathf.InverseLerp(0, weapon.MaxAmmo,weapon.CurrentAmmo );
+		float result = Mathf.InverseLerp(0, _ammoSystem.MaxAmmo, _ammoSystem.CurrentAmmo );
 		return result;
     }
 }

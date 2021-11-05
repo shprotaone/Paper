@@ -321,7 +321,7 @@ MeshRenderer:
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
+  m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RenderingLayerMask: 4294967295
@@ -431,13 +431,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ea248267a45be64c8aeb3865d5c6010, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currName: Boss
-  _health: 4
-  _speed: 1
-  _points: 50
   _flamesContainer: {fileID: 7224696003031088556}
   _explosion: {fileID: 3463645140951452885}
-  _gameManager: {fileID: 0}
   _gameStats: {fileID: 11400000, guid: 03555ee3184eb324087dbf36f54f5856, type: 2}
 --- !u!136 &2336516659268849562
 CapsuleCollider:
@@ -846,7 +841,7 @@ MeshRenderer:
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
+  m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1

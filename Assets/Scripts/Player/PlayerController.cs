@@ -14,7 +14,6 @@ public class PlayerController : MonoCache
     private CharacterController _characterController;
     private RigBuilder _rigBuilder;
     private Weapon _currentWeapon;
-    private HealthSystem _health;
 
     private float _horizontal;
     private float _vertical;
@@ -24,27 +23,26 @@ public class PlayerController : MonoCache
     public Vector3 ShootDirection { get; private set; }
     public float Horizontal { get { return _horizontal; } }
     public float Vertical { get { return _vertical; } }
-    public bool PlayerIsDeath { get { return _gameStats.playerIsDeath; } }
+    public bool PlayerIsDeath { get { return _gameStats.PlayerIsDeath; } }
     #endregion
 
     private void Start()
     {
         _characterController = GetComponent<CharacterController>();
         _currentWeapon = GetComponentInChildren<Weapon>();
-        _rigBuilder = GetComponent<RigBuilder>();
-        _health = GetComponent<HealthSystem>();        
+        _rigBuilder = GetComponent<RigBuilder>();      
         _camera = Camera.main;
     }
 
     public override void OnTick()
     {
-        if (!_health.PlayerIsDeath && !_gameStats.gameInPause)
+        if (!PlayerIsDeath && !_gameStats.GameInPause)
         {
             Movement();
             Aimining();
             Shooting();
         } 
-        else if (_health.PlayerIsDeath)
+        else if(PlayerIsDeath)
         {
             Death();
         }      
@@ -66,7 +64,7 @@ public class PlayerController : MonoCache
         _currentWeapon.Shooting();
 
         if (Input.GetKeyDown(KeyCode.R))
-        _currentWeapon.Reloading();
+        _currentWeapon.ReloadWeapon();
     }
 
     private void Aimining()
@@ -85,9 +83,7 @@ public class PlayerController : MonoCache
     }
 
     private void Death()
-    {
-        _gameStats.playerIsDeath = _health.PlayerIsDeath;
-        
+    {       
         _rigBuilder.enabled = false;
 
         _currentWeapon.ReleasingWeapon();

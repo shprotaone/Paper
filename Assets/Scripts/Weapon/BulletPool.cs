@@ -10,11 +10,11 @@ public class BulletPool<Bullet> where Bullet : MonoBehaviour
 
     private List<Bullet> pool;
 
-    public BulletPool(Bullet prefab,float count)
-    {
-        this.prefab = prefab;
-        this.CreatePool(count);
-    }
+    //public BulletPool(Bullet prefab,float count)
+    //{
+    //    this.prefab = prefab;
+    //    this.CreatePool(count);
+    //}
 
     public BulletPool(Bullet prefab,float count,Transform container)
     {

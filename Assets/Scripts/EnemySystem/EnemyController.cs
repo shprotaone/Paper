@@ -74,7 +74,7 @@ public class EnemyController : MonoCache
     {
         _killCount.AddCount(_currName);
         _gameStats.AddScore(_points);
-        _gameStats.firstBlood = true;
+        _gameStats.FirstBlood = true;
         _dropList.DropItem(this.transform.position,_currName);
         
         StartCoroutine(DeathAction());

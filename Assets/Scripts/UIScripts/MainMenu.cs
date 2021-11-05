@@ -12,15 +12,14 @@ public class MainMenu : MonoCache
 
     private int _idMainMenuScene = 0;
     private int _idGameScene = 1;
-    private bool _gameInPause = false;
 
     public override void OnTick()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !_gameStats.playerIsDeath)
+        if (Input.GetKeyDown(KeyCode.Escape) && !_gameStats.PlayerIsDeath)
         {
             if(_pauseMenu != null)
             {
-                if (_gameInPause)
+                if (_gameStats.GameInPause)
                 {
                     Resume();
                 }
@@ -37,16 +36,14 @@ public class MainMenu : MonoCache
         _pauseMenu.SetActive(false);
         BackButton();
         Time.timeScale = 1f;
-        _gameInPause = false;
-        _gameStats.gameInPause = _gameInPause;
+        _gameStats.GameInPause = false;
     }
 
     public void Pause()
     {
         _pauseMenu.SetActive(true);
         Time.timeScale = 0f;
-        _gameInPause = true;
-        _gameStats.gameInPause = _gameInPause;     
+        _gameStats.GameInPause = true;     
     }
 
     public void StartGame()
