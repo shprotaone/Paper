@@ -1,32 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
 public class EnemyFactory
 {
-    private const string lightEnemyID = "light";
-    private const string midEnemyID = "mid";
-    private const string fatEnemyID = "Fat";
-    private const string bossID = "Boss";
+    public EnemyTypes LightEnemyID { get { return EnemyTypes.LIGHT_ENEMY; } }
+    public EnemyTypes MidEnemyID { get { return EnemyTypes.MID_ENEMY; } }
+    public EnemyTypes FatEnemyID { get { return EnemyTypes.BIG_ENEMY; } }
+    public EnemyTypes BossID { get { return EnemyTypes.BOSS; } }
 
-    public string LightEnemyID { get { return lightEnemyID; } }
-    public string MidEnemyID { get { return midEnemyID; } }
-    public string FatEnemyID { get { return fatEnemyID; } }
-    public string BossID { get { return bossID; } }
+    private Dictionary<EnemyTypes, EnemyModel> enemyFactory;
 
-    private Dictionary<string, EnemyModel> enemyFactory;
-
-    public void Init(EnemyList FillEnemy)
+    public void Init(EnemyList fillEnemy)
     {
-        enemyFactory = new Dictionary<string, EnemyModel>();
-        enemyFactory.Add(lightEnemyID, new EnemyModel(FillEnemy.listLightEnemy));
-        enemyFactory.Add(midEnemyID, new EnemyModel(FillEnemy.listMidEnemy));
-        enemyFactory.Add(fatEnemyID, new EnemyModel(FillEnemy.listFatEnemy));
-        enemyFactory.Add(bossID, new EnemyModel(FillEnemy.listBossEnemy));
+        enemyFactory = new Dictionary<EnemyTypes, EnemyModel>();
+        enemyFactory.Add(LightEnemyID, new EnemyModel(fillEnemy.listLightEnemy));
+        enemyFactory.Add(MidEnemyID, new EnemyModel(fillEnemy.listMidEnemy));
+        enemyFactory.Add(FatEnemyID, new EnemyModel(fillEnemy.listFatEnemy));
+        enemyFactory.Add(BossID, new EnemyModel(fillEnemy.listBossEnemy));
     }
 
-    public EnemyModel CreateEnemy(string nameMob)
+    public EnemyModel CreateEnemy(EnemyTypes type)
     {
-        return enemyFactory[nameMob];
+        return enemyFactory[type];
     }
 }

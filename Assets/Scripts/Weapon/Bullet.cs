@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : MonoCache
 {
     [SerializeField] private float lifetime = 2f;
 
@@ -10,18 +10,7 @@ public class Bullet : MonoBehaviour
     private Vector3 _shootDirection;
     private float _bulletSpeed;
 
-    private void OnEnable()
-    {
-        StartCoroutine(LifeRoutine());
-        _hitSound = GetComponent<AudioSource>();
-    }
-
-    private void OnDisable()
-    {
-        StopAllCoroutines();
-    }
-
-    public void Update()
+    public override void OnTick()
     {
         this.transform.position += _shootDirection * _bulletSpeed * Time.deltaTime;        
     }
@@ -33,12 +22,22 @@ public class Bullet : MonoBehaviour
             StartCoroutine(Deactivate(false));
         }
     }
+    public void Setup(Vector3 shootDir, float bulletSpeed)
+    {
+        this._shootDirection = shootDir;
+        this._bulletSpeed = bulletSpeed;
+
+        StartCoroutine(LifeRoutine());
+        _hitSound = GetComponent<AudioSource>();
+    }
 
     private IEnumerator LifeRoutine()
     {
         yield return new WaitForSecondsRealtime(lifetime);
 
         StartCoroutine(Deactivate(true));
+
+        yield break;
     }
 
     private IEnumerator Deactivate(bool lifetimeDestroy)
@@ -60,11 +59,4 @@ public class Bullet : MonoBehaviour
 
         yield break;
     }
-
-    public void Setup(Vector3 shootDir, float bulletSpeed)
-    {
-        this._shootDirection = shootDir;
-        this._bulletSpeed = bulletSpeed;
-    }
-
 }

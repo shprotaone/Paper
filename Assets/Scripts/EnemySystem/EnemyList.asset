@@ -13,28 +13,28 @@ MonoBehaviour:
   m_Name: EnemyList
   m_EditorClassIdentifier: 
   _lightEnemy:
-    Name: light
+    Type: 0
     MaxHealth: 1
     Speed: 4
     Points: 10
     Prefab: {fileID: 1510251344618728586, guid: 26d972329bb821d41b772b3e7d8047ef,
       type: 3}
   _midEnemy:
-    Name: mid
+    Type: 1
     MaxHealth: 2
     Speed: 3
     Points: 20
     Prefab: {fileID: 6287649195431833162, guid: bc8448c38ba5a384aa53cad6e0c2269a,
       type: 3}
   _fatEnemy:
-    Name: Fat
+    Type: 2
     MaxHealth: 3
     Speed: 2
     Points: 30
     Prefab: {fileID: 1374947272982678608, guid: f87e1f4791a0a734ab33d0e165f5a800,
       type: 3}
   _bossEnemy:
-    Name: Boss
+    Type: 3
     MaxHealth: 4
     Speed: 1
     Points: 50

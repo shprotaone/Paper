@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AmmoBoxItem : Item
+class AmmoBoxItem : Item
 {
     [SerializeField] private float _ammo;
     [SerializeField] private AudioSource _pickSound;

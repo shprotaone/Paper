@@ -18,9 +18,9 @@ public class DropSystem : MonoBehaviour
         _enemyFactory = new EnemyFactory();
     }
 
-    public void DropItem(Vector3 pos, string name)
+    public void DropItem(Vector3 pos, EnemyTypes type)
     {
-        if (name != _enemyFactory.LightEnemyID && name != _enemyFactory.MidEnemyID)
+        if (type != _enemyFactory.LightEnemyID && type != _enemyFactory.MidEnemyID)
         {
             GameObject drop = Drop();
             if (drop != null)

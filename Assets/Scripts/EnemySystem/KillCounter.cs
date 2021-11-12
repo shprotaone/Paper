@@ -9,13 +9,13 @@ public class KillCounter : MonoBehaviour
     [SerializeField] private TMP_Text _ALotOfTasks;
     [SerializeField] private TMP_Text _annualReport;
 
-    public Dictionary<string,int> _kills;
+    public Dictionary<EnemyTypes,int> _kills;
     private EnemyFactory _enemyFactory;
 
     private void Start()
     {
         _enemyFactory = new EnemyFactory();
-        _kills = new Dictionary<string, int>();
+        _kills = new Dictionary<EnemyTypes, int>();
 
         _kills.Add(_enemyFactory.LightEnemyID, 0);
         _kills.Add(_enemyFactory.MidEnemyID, 0);
@@ -23,9 +23,9 @@ public class KillCounter : MonoBehaviour
         _kills.Add(_enemyFactory.BossID, 0);
     }
 
-    public void AddCount(string name)
+    public void AddCount(EnemyTypes type)
     {
-        _kills[name]++;
+        _kills[type]++;
         UpdateResult();
     }
 

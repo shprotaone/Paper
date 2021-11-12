@@ -9,7 +9,7 @@ public class EnemyController : MonoCache
     [SerializeField] private ParticleSystem _explosion;
     [SerializeField] private GameStats _gameStats;
 
-    private string _currName;
+    private EnemyTypes _currType;
     private float _health;
     private float _speed;
     private float _points;
@@ -49,7 +49,7 @@ public class EnemyController : MonoCache
     /// <param name="model"></param>
     public void Fill(EnemyModel model)      
     {
-        _currName = model.Description.Name;
+        _currType = model.Description.Type;
         _health = model.Description.MaxHealth;
         _speed = model.Description.Speed;
         _points = model.Description.Points;
@@ -72,10 +72,10 @@ public class EnemyController : MonoCache
 
     private void DeathEnemy()
     {
-        _killCount.AddCount(_currName);
+        _killCount.AddCount(_currType);
         _gameStats.AddScore(_points);
         _gameStats.FirstBlood = true;
-        _dropList.DropItem(this.transform.position,_currName);
+        _dropList.DropItem(this.transform.position,_currType);
         
         StartCoroutine(DeathAction());
     }

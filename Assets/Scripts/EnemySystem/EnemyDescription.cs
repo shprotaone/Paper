@@ -4,7 +4,7 @@ using UnityEngine;
 [Serializable]
 public class EnemyDescription
 {
-    public string Name;
+    public EnemyTypes Type;
     public float MaxHealth;
     public float Speed;
     public float Points;

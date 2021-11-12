@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealItem : Item
+class HealItem : Item
 {
     [SerializeField] private AudioSource _healSound;
     private int _heal = 1;

@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
@@ -19,7 +18,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private float _spawnChanceBoss = 0.9f;
 
     private EnemyFactory _factory;    
-    private string[] _enemies;
+    private EnemyTypes[] _enemies;
 
     void Start()
     {
@@ -32,7 +31,7 @@ public class SpawnManager : MonoBehaviour
 
     private void InitEnemies()
     {
-        _enemies = new string[4];
+        _enemies = new EnemyTypes[4];
 
         _enemies[0] = _factory.LightEnemyID;
         _enemies[1] = _factory.MidEnemyID;
@@ -53,9 +52,9 @@ public class SpawnManager : MonoBehaviour
         EndGame();
     }
 
-    private void CreateEnemy(string name, int pos)
+    private void CreateEnemy(EnemyTypes type, int pos)
     {
-        EnemyModel enemyModel = _factory.CreateEnemy(name);              //создаем врага
+        EnemyModel enemyModel = _factory.CreateEnemy(type);              //создаем врага
         var obj = enemyModel.Description.Prefab;                         //определяем префаб
 
         GameObject enemy = Instantiate(obj, _spawnPoint[pos].transform.position, Quaternion.identity);   //определяем позицию для спавна
@@ -87,7 +86,7 @@ public class SpawnManager : MonoBehaviour
     /// Выбираем врага для спавна
     /// </summary>
     /// <returns></returns>
-    private string EnemyVariable()
+    private EnemyTypes EnemyVariable()
     {
         int enemyVar;
 
@@ -110,7 +109,7 @@ public class SpawnManager : MonoBehaviour
            enemyVar = 0;
         }
 
-        string result = _enemies[enemyVar];
+        EnemyTypes result = _enemies[enemyVar];
 
         return result;
     }

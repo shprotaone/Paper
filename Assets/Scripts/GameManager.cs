@@ -1,12 +1,11 @@
 using System;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoCache
 {
     [SerializeField] private GameStats _gameStats;
 
     private AudioSource _mainMusic;
-    private float _inGameTime;
     private float _round = 30;
 
     private void Awake()
@@ -15,7 +14,7 @@ public class GameManager : MonoBehaviour
         _mainMusic = GetComponent<AudioSource>();
     }
 
-    private void Update()
+    public override void OnTick()
     {
         if (!_gameStats.PlayerIsDeath)
         {
