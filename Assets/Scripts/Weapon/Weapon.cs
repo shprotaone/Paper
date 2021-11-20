@@ -30,7 +30,7 @@ public class Weapon : MonoBehaviour
 
     public void Shooting()
     {
-        if(Time.time >= _nextTimeToFire && _ammoSystem.MaxAmmo > 0)
+        if(Time.time >= _nextTimeToFire && _ammoSystem.CurrentAmmo > 0)
         {            
             _nextTimeToFire = Time.time + 1f / _fireRate;            
            Shoot();
@@ -46,7 +46,7 @@ public class Weapon : MonoBehaviour
         bullet.transform.rotation = Quaternion.LookRotation(_firePoint.position - _playerController.ShootDirection);
 
         Vector3 shootDir = (_playerController.ShootDirection - _firePoint.position).normalized;
-        bullet.transform.GetComponent<Bullet>().Setup(shootDir, _bulletSpeed);
+        bullet.transform.GetComponent<Bullet>().Construct(shootDir, _bulletSpeed);
 
         _shootLight.Play();
         _sounds[1].Play();
@@ -64,6 +64,6 @@ public class Weapon : MonoBehaviour
     {
         _rigidbody.isKinematic = false;
         _rigidbody.useGravity = true;
-        _rigidbody.AddForce(Vector3.forward / 5, ForceMode.Impulse);
+        _rigidbody.AddForce(Vector3.up);
     }
 }

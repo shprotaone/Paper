@@ -15,6 +15,4 @@ public class MonoCache : MonoBehaviour
     public void Tick() => OnTick();
 
     public virtual void OnTick() { }
-
-    //400fps => 480fps
 }

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "Enemy", menuName = "CreateEnemyList", order = 51)]
 public class EnemyList : ScriptableObject

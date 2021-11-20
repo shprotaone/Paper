@@ -46,7 +46,5 @@ public class DropSystem : MonoBehaviour
         {
             return null;
         }
-    }
-
-    
+    }    
 }

@@ -11,8 +11,7 @@ public class LevelLoader : MonoBehaviour
     [SerializeField] private TMP_Text _progressText;
 
     public void LoadLevel(int sceneIndex)
-    {
-        
+    {       
         StartCoroutine(LoadAsync(sceneIndex));       
     }
 

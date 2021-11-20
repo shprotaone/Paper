@@ -12,7 +12,7 @@ public class Bullet : MonoCache
 
     public override void OnTick()
     {
-        this.transform.position += _shootDirection * _bulletSpeed * Time.deltaTime;        
+       this.transform.position += _shootDirection * _bulletSpeed * Time.deltaTime;        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -22,7 +22,7 @@ public class Bullet : MonoCache
             StartCoroutine(Deactivate(false));
         }
     }
-    public void Setup(Vector3 shootDir, float bulletSpeed)
+    public void Construct(Vector3 shootDir, float bulletSpeed)
     {
         this._shootDirection = shootDir;
         this._bulletSpeed = bulletSpeed;

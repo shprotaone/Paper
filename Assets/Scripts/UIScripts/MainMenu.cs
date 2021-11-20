@@ -5,6 +5,7 @@ public class MainMenu : MonoCache
 {
     [SerializeField] private GameObject _higscoreTable;
     [SerializeField] private GameObject _pauseMenu;
+    [SerializeField] private GameObject _escTextObj;
     [SerializeField] private GameObject _settings;
     [SerializeField] private GameObject _gameGuide;
     [SerializeField] private GameObject _confirmExit;
@@ -34,6 +35,7 @@ public class MainMenu : MonoCache
     public void Resume()
     {
         _pauseMenu.SetActive(false);
+        _escTextObj.SetActive(true);
         BackButton();
         Time.timeScale = 1f;
         _gameStats.GameInPause = false;
@@ -42,6 +44,7 @@ public class MainMenu : MonoCache
     public void Pause()
     {
         _pauseMenu.SetActive(true);
+        _escTextObj.SetActive(false);
         Time.timeScale = 0f;
         _gameStats.GameInPause = true;     
     }

@@ -6,6 +6,7 @@ public class RecordConfirmer : MonoBehaviour
     [SerializeField] private GameObject _inputNameField;
     [SerializeField] private HighscoreTable _highscoreTable;
     [SerializeField] private TMP_Text _errorText;
+    [SerializeField] private TMP_Text _escText;
     [SerializeField] private GameStats _gameStats;
 
     private string _nameForRecord;
@@ -25,6 +26,7 @@ public class RecordConfirmer : MonoBehaviour
         if (condition)
         {
             _inputNameField.SetActive(true);
+            _escText.text = "";
         }
     }
 

@@ -29,7 +29,7 @@ public class HealthUpdateUI : MonoBehaviour
             {
                 _heartsUI[value - 1].SetActive(activate);
             }
-            else
+            else if(value >=0)
             {
                 _heartsUI[value].SetActive(activate);
             }

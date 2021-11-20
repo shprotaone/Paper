@@ -107,6 +107,6 @@ public class EnemyController : MonoCache
 
         Destroy(this.gameObject);
 
-        yield return null;
+        yield break;
     }
 }

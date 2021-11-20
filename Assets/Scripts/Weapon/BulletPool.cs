@@ -10,12 +10,6 @@ public class BulletPool<Bullet> where Bullet : MonoBehaviour
 
     private List<Bullet> pool;
 
-    //public BulletPool(Bullet prefab,float count)
-    //{
-    //    this.prefab = prefab;
-    //    this.CreatePool(count);
-    //}
-
     public BulletPool(Bullet prefab,float count,Transform container)
     {
         this.prefab = prefab;
@@ -46,7 +40,9 @@ public class BulletPool<Bullet> where Bullet : MonoBehaviour
     {
         var createdBullet = Object.Instantiate(this.prefab, this.Container);
         createdBullet.gameObject.SetActive(isActiveByDefault);
+
         this.pool.Add(createdBullet);
+
         return createdBullet;
     }   
 
